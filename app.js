@@ -47,6 +47,8 @@ app.use(session({
 const db = require('./db');
 const authRoutes = require('./routes/auth-routes');
 const authController = require('./controllers/auth-controller');
+const gearRoutes = require('./routes/gear-routes');
+const listsRoutes = require('./routes/lists-routes');
 
 app.use('/auth', authRoutes);
 
@@ -68,6 +70,11 @@ app.use('/', async (req, res, next) => {
 
     }
 })
+
+app.use('/gear', gearRoutes);
+
+app.use('/lists', listsRoutes);
+
 
 /**
  * ===================================
