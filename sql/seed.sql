@@ -8,4 +8,20 @@ INSERT INTO gear(user_id, name, type, img_link) VALUES('1', 'Planet Waves Americ
 
 INSERT INTO gear(user_id, name, type, img_link) VALUES('1', 'Planet Waves American Stage Guitar Cable (straight tips)', 'accessory', 'https://images-na.ssl-images-amazon.com/images/I/41aJnQosiRL.jpg');
 
+INSERT INTO gear(user_id, name, type, img_link) VALUES('1', 'TC Electronic Polytune 2 Mini', 'pedal', 'https://ae01.alicdn.com/kf/HTB1QhjseJHO8KJjSZFtq6AhfXXac/TC-Electronic-PolyTune-2-Mini-Polyphonic-Tuning-Pedal-Small-format-Guitar-Tuner-Pedal-3-Chromatic-Tuning.jpg_640x640q70.jpg');
+
+INSERT INTO gear(user_id, name, type, img_link) VALUES('1', 'Strymon Big Sky Reverb', 'pedal', 'https://www.long-mcquade.com/files/50861/lg_0041a3ada2d76a1ee8ecb93d8256a2d9.');
+
+--
+
+INSERT INTO pedalboards (user_id, name) VALUES(1, 'General Purpose') RETURNING *;
+INSERT INTO pedalboards (user_id, name) VALUES(1, 'Upcoming Show X') RETURNING *;
+
+--
+
+INSERT INTO pedalboards_gear (pedalboard_id, gear_id, gear_order) VALUES(1, 2, 1) RETURNING *;
+INSERT INTO pedalboards_gear (pedalboard_id, gear_id, gear_order) VALUES(1, 6, 2) RETURNING *;
+
+-- SELECT * FROM gear INNER JOIN pedalboards_gear ON gear.id = pedalboards_gear.gear_id WHERE user_id = 1;
+
 --
