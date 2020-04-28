@@ -55,7 +55,7 @@ class SinglePedalboard extends React.Component {
                                 <a href="./delete" className="pedalboard__delete-link"><p>Delete Pedalboard</p></a>
                             </div>
                         </div>
-                        <Nav link="/pedalboard" linklabel="Back" link2="/lists" link2label="Lists" link3="/" link3label="Home"/>
+                        <Nav link="/pedalboards" linklabel="Back" link2="/lists" link2label="Lists" link3="/" link3label="Home"/>
                     </main>
                 </body>
             </html>
