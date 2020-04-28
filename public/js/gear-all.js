@@ -1,3 +1,33 @@
+// See More Button
+
+const seeMoreBtns = document.querySelectorAll('.single-gear__more-btn');
+
+seeMoreBtnClickHandler = (ev) => {
+    const gearType = ev.target.dataset.gearType;
+    const gearId = ev.target.dataset.gearId
+    const gearOptions = document.querySelectorAll(`.select-${gearId}>option`);
+
+    gearOptions.forEach(option => {
+        if (option.value == gearType) {
+            option.setAttribute('selected', 'selected');
+        }
+    })
+
+    const seeMoreSection = document.querySelector(`.more-${gearId}`);
+    seeMoreSection.classList.toggle('display-none');
+
+    if (ev.target.innerText == 'See More') {
+        ev.target.innerText = 'Close';
+    } else {
+        ev.target.innerText = 'See More';
+    }
+}
+
+seeMoreBtns.forEach((btn) => {
+    btn.addEventListener('click', seeMoreBtnClickHandler);
+})
+
+
 //Add Gear Item
 
 const addItemBtn = document.querySelector('.add-form__submit-btn');
@@ -17,14 +47,31 @@ addItemBtn.addEventListener('click', async () => {
     gearContainer = document.createElement('div');
     gearContainer.setAttribute("key", gear.id);
     gearContainer.innerHTML =
-        `<div className="single-gear__img-container">
-                <img src=${gear["img_link"]} alt=${gear.name} className="single-gear__img"/>
+        `<div class="single-gear__img-container">
+                <img src=${gear["img_link"]} alt=${gear.name} class="single-gear__img"/>
             </div>
-        <a href='./gear/${gear.id}' className="single-gear__name">${gear.name}</a>`;
+        <a href='./gear/${gear.id}' class="single-gear__name">${gear.name}</a>
+
+        <div class="single-gear__more more-${gear.id} display-none">
+            <h4 class="single-gear__select-label">Type:</h4>
+            <select data-gear-id={gear.id} class="single-gear__select select-${gear.id}" name="type">
+                <option value="guitar" class="single-gear__option">Guitar/Bass</option>
+                <option value="pedal" class="single-gear__option">Guitar/Bass Pedals</option>
+                <option value="amp" class="single-gear__option">Amplifiers & Monitors</option>
+                <option value="drums" class="single-gear__option">Drums & Percussion</option>
+                <option value="keyboard" class="single-gear__option">Keyboards/Synths</option>
+                <option value="accessory" class="single-gear__option">Accessories</option>
+                <input type="text" class="single-gear__img-input img-input-${gear.id}" value="${gear["img_link"]}" />
+            </select>
+
+        </div>
+
+        <button data-gear-id=${gear.id} data-gear-type=${gear.type} class="single-gear__more-btn more-btn-${gear.id}">See More</button>`;
 
     gearWrapper.append(gearContainer);
-})
 
+    document.querySelector(`.more-btn-${gear.id}`).addEventListener('click', seeMoreBtnClickHandler);
+})
 
 //Filter by Type
 
@@ -43,11 +90,30 @@ typeFilterSelect.addEventListener('change', async () => {
             gearContainer.setAttribute('key', gear.id);
             gearContainer.classList.add('single-gear__container');
             gearContainer.innerHTML =
-                `<div className="single-gear__img-container">
-                        <img src=${gear["img_link"]} alt=${gear.name} className="single-gear__img"/>
+                `<div class="single-gear__img-container">
+                        <img src=${gear["img_link"]} alt=${gear.name} class="single-gear__img"/>
                     </div>
-                <a href='./gear/${gear.id}' className="single-gear__name">${gear.name}</a>`;
+                <a href='./gear/${gear.id}' class="single-gear__name">${gear.name}</a>
+
+                <div class="single-gear__more more-${gear.id} display-none">
+                    <h4 class="single-gear__select-label">Type:</h4>
+                    <select data-gear-id={gear.id} class="single-gear__select select-${gear.id}" name="type">
+                        <option value="guitar" class="single-gear__option">Guitar/Bass</option>
+                        <option value="pedal" class="single-gear__option">Guitar/Bass Pedals</option>
+                        <option value="amp" class="single-gear__option">Amplifiers & Monitors</option>
+                        <option value="drums" class="single-gear__option">Drums & Percussion</option>
+                        <option value="keyboard" class="single-gear__option">Keyboards/Synths</option>
+                        <option value="accessory" class="single-gear__option">Accessories</option>
+                        <input type="text" class="single-gear__img-input img-input-${gear.id}" value="${gear["img_link"]}" />
+                    </select>
+
+                </div>
+
+                <button data-gear-id=${gear.id} data-gear-type=${gear.type} class="single-gear__more-btn more-btn-${gear.id}">See More</button>`;
+
             gearWrapper.append(gearContainer);
+
+            document.querySelector(`.more-btn-${gear.id}`).addEventListener('click', seeMoreBtnClickHandler);
         })
     }
 

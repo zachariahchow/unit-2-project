@@ -15,6 +15,21 @@ class AllGear extends React.Component {
                     <img src={gear["img_link"]} alt={gear.name} className="single-gear__img"/>
                 </div>
                 <a href={`./gear/${gear.id}`} className="single-gear__name">{gear.name}</a>
+                <div className={`single-gear__more more-${gear.id} display-none`}>
+                    <h4 className="single-gear__select-label">Type:</h4>
+                    <select data-gear-id={gear.id} className={`single-gear__select select-${gear.id}`} name="type">
+                        <option value="guitar" className="single-gear__option">Guitar/Bass</option>
+                        <option value="pedal" className="single-gear__option">Guitar/Bass Pedals</option>
+                        <option value="amp" className="single-gear__option">Amplifiers & Monitors</option>
+                        <option value="drums" className="single-gear__option">Drums & Percussion</option>
+                        <option value="keyboard" className="single-gear__option">Keyboards/Synths</option>
+                        <option value="accessory" className="single-gear__option">Accessories</option>
+                        <input type="text" className={`single-gear__img-input img-input-${gear.id}`} defaultValue={`${gear["img_link"]}`} />
+                    </select>
+
+                </div>
+
+                <button data-gear-id={gear.id} data-gear-type={gear.type} className={`single-gear__more-btn more-btn-${gear.id}`}>See More</button>
             </div>
         )
 
