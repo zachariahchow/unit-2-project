@@ -8,14 +8,12 @@ module.exports.getAllPedalboards = async (req, res) => {
 
     console.log(allPedalboardsResult);
 
-    res.send(allPedalboardsResult);
+    res.render('./pedalboards/pedalboards-all', { allPedalboards: allPedalboardsResult })
 }
 
 module.exports.getPedalboardById = async (req, res) => {
 
     const allPedalsResult = await Gear.getByType(req.session.userId, 'pedal');
-
-    console.log(allPedalsResult);
 
     const getPedalboardResult = await Pedalboard.getById(req.params.id);
 

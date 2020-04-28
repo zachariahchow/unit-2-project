@@ -2,6 +2,7 @@ const React = require("react");
 
 import Head from '../page-components/head-component';
 import Header from '../page-components/header-component';
+import Nav from '../page-components/nav-component';
 
 class AllPedalboards extends React.Component {
 
@@ -10,7 +11,7 @@ class AllPedalboards extends React.Component {
         const pedalboardInfo = this.props.allPedalboards.map(pedalboard =>
 
             <div className="single-pedalboard__container" key={pedalboard.id}>
-                <a href={`./${pedalboard.id}`} className="single-pedalboard__name">{pedalboard.name}</a>
+                <a href={`./pedalboards/${pedalboard.id}`} className="single-pedalboard__name">{pedalboard.name}</a>
             </div>
         )
 
@@ -23,7 +24,8 @@ class AllPedalboards extends React.Component {
                     <Header />
                     <main>
                         <div className="form__wrapper">
-                            <h2 className="pedalboards-all__header">Pedalboards</h2> { pedalboardInfo }
+                            <h2 className="pedalboards-all__header">Pedalboards</h2>
+                            { pedalboardInfo }
                         </div>
                     </main>
                 </body>
