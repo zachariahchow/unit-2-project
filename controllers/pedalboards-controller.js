@@ -27,16 +27,14 @@ module.exports.getPedalboardById = async (req, res) => {
             return acc;
         }, [])
 
-    console.log(idsOfAddedPedals);
-
     const allUnaddedPedals = allPedalsResult
         .filter(pedal => !idsOfAddedPedals.find(id => id == pedal.id));
 
-    console.log(allUnaddedPedals);
+    console.log(getPedalboardResult);
 
     res.render('./pedalboards/pedalboards-single', {
         allUnaddedPedals: allUnaddedPedals,
-        singlePedalboard: getPedalboardResult,
+        singlePedalboard: getPedalboardResult[0],
         singlePedalboardPedals: getPedalboardPedalsResult
     });
 }
