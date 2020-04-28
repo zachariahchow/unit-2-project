@@ -7,7 +7,7 @@ module.exports.getAllGear = async (req, res) => {
 
     console.log(allGearResult)
 
-    res.send(allGearResult);
+    res.render('./gear/gear-all', { allGear: allGearResult });
 }
 
 module.exports.getGearById = async (req, res) => {
