@@ -54,3 +54,12 @@ module.exports.deleteGearById = async (req, res) => {
 
 }
 //
+
+//API endpoints for gear-all//
+
+module.exports.getGearByType = async (req, res) => {
+
+    const getGearTypeResult = await Gear.getByType(req.session.userId, req.params.type);
+
+    res.json(getGearTypeResult);
+}

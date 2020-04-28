@@ -7,6 +7,8 @@ const gearController = require('../controllers/gear-controller.js');
 
 router.use('/:route', express.static(path.join(__dirname, '..', '/public/')));
 
+router.get('/type/:type', gearController.getGearByType);
+
 router.get('/:id', gearController.getGearById);
 
 router.delete('/:id', gearController.deleteGearById);
