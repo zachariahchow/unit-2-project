@@ -13,7 +13,7 @@ class AllGear extends React.Component {
                 <div className="single-artist__img-container">
                     <img src={gear["img_link"]} alt={gear.name} className="single-gear__img"/>
                 </div>
-                <a href={`./${gear.id}`} className="single-gear__name">{gear.name}</a>
+                <a href={`./gear/${gear.id}`} className="single-gear__name">{gear.name}</a>
             </div>
         )
 

@@ -14,7 +14,9 @@ module.exports.getGearById = async (req, res) => {
 
     const getGearResult = await Gear.getById(req.params.id);
 
-    res.send(getGearResult);
+    console.log(getGearResult);
+
+    res.render('./gear/gear-single', { singleGear: getGearResult[0] });
 }
 
 //Consider turning these into AJAX calls to internalAPI endpoints, manipulate DOM rather than render new page
