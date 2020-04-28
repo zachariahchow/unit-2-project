@@ -14,11 +14,6 @@ class AuthIndex extends React.Component {
                     <Header />
                     <main>
 
-                    <div className="banner">
-                        <div className="landing-page__nav">
-                            <div className="overlay"></div>
-                        </div>
-                    </div>
                     <div className="login-register__wrapper">
                             <a href="/auth/login" className="login-link"><p>Login</p></a>
                             <a href="/auth/register" className="register-link"><p>Register</p></a>

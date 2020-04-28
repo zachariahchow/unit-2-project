@@ -2,6 +2,7 @@ const React = require("react");
 
 import Head from '../page-components/head-component';
 import Header from '../page-components/header-component';
+import Nav from '../page-components/nav-component';
 
 class LoginForm extends React.Component {
 
@@ -29,9 +30,7 @@ class LoginForm extends React.Component {
                 <Head />
                 <body>
                     <Header />
-                    <div className="nav">
-                        <a href="/" className="nav__link home-link"><p>Home</p></a>
-                    </div>
+                    <Nav link="/" linklabel="Home"/>
                     <main>
                         <div className="form__wrapper">
                             <form method="POST" action={`/auth/login`} className="auth-form">

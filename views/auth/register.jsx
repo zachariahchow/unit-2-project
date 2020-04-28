@@ -30,9 +30,7 @@ class RegisterForm extends React.Component {
                 <script defer src="" />
                 <body>
                     <Header />
-                    <div className="nav">
-                        <a href="/" className="nav__link home-link"><p>Home</p></a>
-                    </div>
+                    <Nav link="/" linklabel="Home"/>
                     <main>
                         <div className="form__wrapper">
                             <form method="POST" action={`/auth/register`} className="auth-form">

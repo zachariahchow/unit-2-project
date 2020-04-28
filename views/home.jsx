@@ -25,7 +25,7 @@ class Home extends React.Component {
 
                     <Header />
                     <main>
-                    <Nav />
+                    <Nav link="/gear" linklabel="Gear" link2="/pedalboards" link2label="Pedalboards" link3="/lists" link3label="Lists"/>
 
                     <div className="banner">
                         <div className="banner__img-container">

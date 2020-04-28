@@ -2,6 +2,7 @@ const React = require("react");
 
 import Head from '../page-components/head-component';
 import Header from '../page-components/header-component';
+import Nav from '../page-components/nav-component';
 
 class SingleGear extends React.Component {
 
@@ -24,6 +25,7 @@ class SingleGear extends React.Component {
                                 <a href="./delete" className="gear__delete-link"><p>Delete Gear</p></a>
                             </div>
                         </div>
+                        <Nav link="/gear" linklabel="Back" link2="/pedalboards" link2label="pedalboards" link3="/" link3label="Home"/>
                     </main>
                 </body>
             </html>

@@ -2,6 +2,7 @@ const React = require("react");
 
 import Head from '../page-components/head-component';
 import Header from '../page-components/header-component';
+import Nav from '../page-components/nav-component';
 
 class AllGear extends React.Component {
 
@@ -25,6 +26,7 @@ class AllGear extends React.Component {
                     <main>
                         {gearInfo}
                     </main>
+                    <Nav link="/pedalboards" linklabel="Pedalboards" link2="/lists" link2label="Lists" link3="/" link3label="Home"/>
                 </body>
             </html>
         );
