@@ -31,7 +31,7 @@ module.exports.postAddGear = async (req, res) => {
 
     const addGearResult = await newGear.add();
 
-    res.send(addGearResult);
+    res.json(addGearResult);
 }
 
 module.exports.putEditGearById = async (req, res) => {

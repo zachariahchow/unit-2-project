@@ -28,8 +28,8 @@ class AllGear extends React.Component {
                     <main>
                         <form method="POST" action={`/gear`} className="add-form">
                             <h2 className="add-form__header">Add Item</h2>
-                            <input type="text" name="name" placeholder="Name" maxlength="100"/>
-                            <input type="text" name="img" placeholder="Image Link" maxlength="300"/>
+                            <input className="add-form__name-input" type="text" name="name" placeholder="Name" maxlength="100"/>
+                            <input className="add-form__img-input" type="text" name="img" placeholder="Image Link" maxlength="300"/>
                             <select className="add-form__select" name="type">
                                 <option value="guitar" className="add-form__option">Guitar/Bass</option>
                                 <option value="pedal" className="add-form__option">Guitar/Bass Pedals</option>
@@ -38,7 +38,7 @@ class AllGear extends React.Component {
                                 <option value="keyboard" className="add-form__option">Keyboards/Synths</option>
                                 <option value="accessory" className="add-form__option">Accessories</option>
                             </select>
-                            <button className="add-form__submit-btn" type="submit">Add</button>
+                            <button className="add-form__submit-btn" type="button">Add</button>
                         </form>
                             <div className="filter__wrapper">
                                 <h2 className="filter__header">Filter By Type:</h2>
