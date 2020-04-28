@@ -31,7 +31,7 @@ module.exports = class List {
     }
 
     static async getById(listId) {
-        const query = `SELECT * FROM lists WHERE id=${gearId}`;
+        const query = `SELECT * FROM lists WHERE id=${listId}`;
         const { rows } = await db.query(query);
 
         return rows;
