@@ -49,6 +49,7 @@ const authRoutes = require('./routes/auth-routes');
 const authController = require('./controllers/auth-controller');
 const gearRoutes = require('./routes/gear-routes');
 const listsRoutes = require('./routes/lists-routes');
+const pedalboardsRoutes = require('./routes/pedalboards-routes');
 
 app.use('/auth', authRoutes);
 
@@ -83,6 +84,8 @@ app.get('/', async (req, res) => {
 app.use('/gear', gearRoutes);
 
 app.use('/lists', listsRoutes);
+
+app.use('/pedalboards', pedalboardsRoutes);
 
 
 /**
