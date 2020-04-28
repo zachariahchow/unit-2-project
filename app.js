@@ -58,15 +58,24 @@ app.use('/', async (req, res, next) => {
 
     if (req.session.userId) {
 
-        req.session.currentUser = await authController.getUserInfo(req.session.userId);
-
-        res.render('home', { 'currentUser': req.session.currentUser });
+        next();
 
     } else {
 
         //redirect to homepage with auth routes if user is not logged in
 
         res.redirect('/auth');
+
+    }
+})
+
+app.get('/', async (req, res) => {
+
+    if (req.session.userId) {
+
+        req.session.currentUser = await authController.getUserInfo(req.session.userId);
+
+        res.render('home', { 'currentUser': req.session.currentUser });
 
     }
 })
