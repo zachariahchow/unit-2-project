@@ -73,7 +73,7 @@ module.exports = class Gear {
     }
 
     static async removeFromPedalboard(pedalboardId, gearId) {
-        const query = `DELETE from pedalboards_gear WHERE pedalboard_id=${pedalboardId} AND gear_id=${gearId}`
+        const query = `DELETE from pedalboards_gear WHERE pedalboard_id=${pedalboardId} AND gear_id=${gearId} RETURNING *`
         const { rows } = await db.query(query);
 
         return rows;

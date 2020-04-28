@@ -9,6 +9,8 @@ router.use('/:route', express.static(path.join(__dirname, '..', '/public/')));
 
 router.post('/:id/:gearId', pedalboardsController.postAddPedalToPedalboard);
 
+router.delete('/:id/:gearId', pedalboardsController.deletePedalFromPedalboard);
+
 router.get('/:id', pedalboardsController.getPedalboardById);
 
 router.delete('/:id', pedalboardsController.deletePedalboardById);

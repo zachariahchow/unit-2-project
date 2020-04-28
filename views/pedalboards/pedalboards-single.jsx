@@ -29,7 +29,7 @@ class SinglePedalboard extends React.Component {
                     <div className="single-pedal__img-container">
                         <img src={pedal["img_link"]} alt={pedal.name} className="single-pedal__img"/>
                     </div>
-                    <button type="button" data-pedalboard-id={this.props.singlePedalboard.id} data-pedal-id={pedal.id} className="single-pedalboard__pedals-list-item-delete-btn">Delete</button>
+                    <button type="button" data-pedalboard-id={this.props.singlePedalboard.id} data-pedal-id={pedal.id} data-gear-id={pedal['gear_id']} className="single-pedalboard__pedals-list-item-delete-btn">Delete</button>
                 </div>
             )
 

@@ -28,7 +28,7 @@ module.exports.getPedalboardById = async (req, res) => {
     const allUnaddedPedals = allPedalsResult
         .filter(pedal => !idsOfAddedPedals.find(id => id == pedal.id));
 
-    console.log(getPedalboardResult);
+    console.log(getPedalboardPedalsResult);
 
     res.render('./pedalboards/pedalboards-single', {
         allUnaddedPedals: allUnaddedPedals,
@@ -65,8 +65,15 @@ module.exports.deletePedalboardById = async (req, res) => {
 
 module.exports.postAddPedalToPedalboard = async (req, res) => {
 
-    const addPedalboardResult = await Gear.addToPedalboard(req.params.id, req.params.gearId, req.body.gearOrder);
+    const addPedalToPedalboardResult = await Gear.addToPedalboard(req.params.id, req.params.gearId, req.body.gearOrder);
 
-    res.json(addPedalboardResult);
+    res.json(addPedalToPedalboardResult);
+}
+
+module.exports.deletePedalFromPedalboard = async (req, res) => {
+
+    const deletePedalFromPedalboardResult = await Gear.removeFromPedalboard(req.params.id, req.params.gearId);
+
+    res.json(deletePedalFromPedalboardResult);
 }
 //
