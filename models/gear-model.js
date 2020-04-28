@@ -18,8 +18,8 @@ module.exports = class Gear {
         return rows;
     }
 
-    static async getAll() {
-        const query = `SELECT * FROM gear where user_id=${req.session.userId}`
+    static async getAll(userId) {
+        const query = `SELECT * FROM gear where user_id=${userId}`
         const { rows } = await db.query(query);
 
         return rows;
@@ -32,6 +32,20 @@ module.exports = class Gear {
         return rows;
     }
 
+    static async updateById(gearId, name, type, img, notes) {
+        const queryT = `UPDATE gear SET name = '${name}', type = '${type}', img_link = '${img}', notes = '${notes}' WHERE id=${gearId} RETURNING *`
+
+        const { rows } = await db.query(queryT);
+
+        return rows;
+    }
+
+    static async deleteById(gearId) {
+        const queryT = `DELETE from gear WHERE id=${gearId}`;
+        const { rows } = await db.query(query);
+
+        return rows;
+    }
 
     static async addToPedalboard(pedalboardId, gearId, gearOrder) {
 
