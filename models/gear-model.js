@@ -12,7 +12,7 @@ module.exports = class Gear {
 
     async add() {
         const queryT = `INSERT INTO gear (user_id, name, type, img_link, notes) VALUES($1, $2, $3, $4, $5) RETURNING *`;
-        const queryV = [this.userId, this.name, this.type, this.notes];
+        const queryV = [this.userId, this.name, this.type, this.img, this.notes];
         const { rows } = await db.query(queryT, queryV);
 
         return rows;
