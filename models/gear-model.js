@@ -35,6 +35,7 @@ module.exports = class Gear {
     static async getByType(userId, type) {
 
         const query = `SELECT * FROM gear WHERE user_id=${userId} AND type='${type}'`;
+
         const { rows } = await db.query(query);
 
         return rows;

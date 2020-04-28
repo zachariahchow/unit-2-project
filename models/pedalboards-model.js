@@ -56,8 +56,16 @@ module.exports = class Pedalboard {
     }
 
     static async deleteFromList(listId, pedalboardId) {
-        const queryT = `DELETE from lists_pedalboards WHERE pedalboard_id=${pedalboardId} AND list_id=${listId}`
-        const { rows } = await db.query(queryT);
+        const query = `DELETE from lists_pedalboards WHERE pedalboard_id=${pedalboardId} AND list_id=${listId}`
+        const { rows } = await db.query(query);
+
+        return rows;
+    }
+
+    static async getAllPedals(userId, pedalboardId) {
+        const query = `SELECT * FROM gear INNER JOIN pedalboards_gear ON gear.id = pedalboards_gear.gear_id WHERE user_id = ${userId} AND pedalboard_id =${pedalboardId};`;
+
+        const { rows } = await db.query(query);
 
         return rows;
     }

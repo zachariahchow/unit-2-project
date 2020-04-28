@@ -1,5 +1,6 @@
 const db = require('../db.js');
 const Pedalboard = require('../models/pedalboards-model');
+const Gear = require('../models/gear-model');
 
 module.exports.getAllPedalboards = async (req, res) => {
 
@@ -12,11 +13,32 @@ module.exports.getAllPedalboards = async (req, res) => {
 
 module.exports.getPedalboardById = async (req, res) => {
 
+    const allPedalsResult = await Gear.getByType(req.session.userId, 'pedal');
+
+    console.log(allPedalsResult);
+
     const getPedalboardResult = await Pedalboard.getById(req.session.userId);
 
-    console.log(getPedalboardResult);
+    const getPedalboardPedalsResult = await Pedalboard.getAllPedals(req.session.userId, req.params.id);
 
-    res.send(getPedalboardResult);
+    const idsOfAddedPedals = getPedalboardPedalsResult
+        .reduce((acc, pedal) => {
+            acc.push(pedal['gear_id']);
+            return acc;
+        }, [])
+
+    console.log(idsOfAddedPedals);
+
+    const allUnaddedPedals = allPedalsResult
+        .filter(pedal => !idsOfAddedPedals.find(id => id == pedal.id));
+
+    console.log(allUnaddedPedals);
+
+    res.render('./pedalboards/pedalboards-single', {
+        allUnaddedPedals: allUnaddedPedals,
+        singlePedalboard: getPedalboardResult,
+        singlePedalboardPedals: getPedalboardPedalsResult
+    });
 }
 
 //Consider turning these into AJAX calls to internalAPI endpoints, manipulate DOM rather than render new page
