@@ -25,6 +25,22 @@ main {
 		align-items: center;
 }
 
+/*TEMPORARY*/
+
+.single-pedal__img-container {
+		width: 300px;
+		height: auto;
+}
+
+img {
+		width: 100%;
+		max-width: 300px;
+		height: auto;
+		object-fit: cover;
+}
+
+/**/
+
 .header {
 		width: 100%;
 		height: 20%;
