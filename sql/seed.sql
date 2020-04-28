@@ -27,4 +27,12 @@ INSERT INTO pedalboards_gear (pedalboard_id, gear_id, gear_order) VALUES(1, 6, 2
 
 -- SELECT * FROM gear INNER JOIN pedalboards_gear ON gear.id = pedalboards_gear.gear_id WHERE user_id = 1;
 
+INSERT INTO lists (name, user_id) VALUES('Substation', 1) RETURNING *;
+
+--
+
+INSERT INTO lists_pedalboards (list_id, pedalboard_id) VALUES(1, 1) RETURNING *;
+
+INSERT INTO lists_pedalboards (list_id, gear_id) VALUES(1, 1) RETURNING *;
+
 --
