@@ -50,3 +50,11 @@ CREATE TABLE IF NOT EXISTS lists_pedalboards (
 	list_id INTEGER REFERENCES lists(id) ON DELETE CASCADE,
 	pedalboard_id INTEGER REFERENCES pedalboards(id) ON DELETE CASCADE
 );
+
+--
+
+CREATE TABLE IF NOT EXISTS lists_gear (
+	id serial PRIMARY KEY,
+	list_id INTEGER REFERENCES lists(id) ON DELETE CASCADE,
+	gear_id INTEGER REFERENCES gear(id) ON DELETE CASCADE
+);

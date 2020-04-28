@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS lists_gear (
+	id serial PRIMARY KEY,
+	list_id INTEGER REFERENCES lists(id) ON DELETE CASCADE,
+	gear_id INTEGER REFERENCES gear(id) ON DELETE CASCADE
+);

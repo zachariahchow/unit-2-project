@@ -12,6 +12,9 @@ INSERT INTO gear(user_id, name, type, img_link) VALUES('1', 'TC Electronic Polyt
 
 INSERT INTO gear(user_id, name, type, img_link) VALUES('1', 'Strymon Big Sky Reverb', 'pedal', 'https://www.long-mcquade.com/files/50861/lg_0041a3ada2d76a1ee8ecb93d8256a2d9.');
 
+INSERT INTO gear(user_id, name, type, img_link) VALUES('1', 'Ibanez 40th Anniversary TS808 Tubescreamer', 'pedal', 'https://cdn.shopify.com/s/files/1/2501/6068/products/I01-TS80840TH_1562321996731_500x500.jpg?v=1562322070');
+
+
 --
 
 INSERT INTO pedalboards (user_id, name) VALUES(1, 'General Purpose') RETURNING *;
