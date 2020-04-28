@@ -15,8 +15,16 @@ module.exports = class List {
         return rows;
     }
 
-    static async getAll() {
-        const query = `SELECT * FROM lists where user_id=${req.session.userId}`
+    static async getAll(userId) {
+        const query = `SELECT * FROM lists where user_id=${userId}`
+        const { rows } = await db.query(query);
+
+        return rows;
+    }
+
+    static async editById(listId, name) {
+        const query = `UPDATE lists SET name = '${name}', WHERE id=${listId} RETURNING *`
+
         const { rows } = await db.query(query);
 
         return rows;
@@ -24,6 +32,14 @@ module.exports = class List {
 
     static async getById(listId) {
         const query = `SELECT * FROM lists WHERE id=${gearId}`;
+        const { rows } = await db.query(query);
+
+        return rows;
+    }
+
+    static async deleteById(listId) {
+
+        const query = `DELETE from lists WHERE id=${listId} RETURNING *`;
         const { rows } = await db.query(query);
 
         return rows;

@@ -1,23 +1,41 @@
 const db = require('../db.js');
+const List = require('../models/lists-model');
 
 module.exports.getAllLists = async (req, res) => {
-    res.send('Get All Lists');
+
+    const getAllListsResult = await List.getAll(req.session.userId);
+
+    res.send(getAllListsResult);
 }
 
 module.exports.getListById = async (req, res) => {
-    res.send('Get List By Id');
+
+    const getListResult = await List.getById(req.params.id);
+
+    res.send(getListResult);
 }
 
 //Consider turning these into AJAX calls to internalAPI endpoints, manipulate DOM rather than render new page
 module.exports.postAddList = async (req, res) => {
-    res.send('Post Add List');
+
+    const newList = new List(req.session.userId, req.body.name);
+
+    const addListResult = await newList.add();
+
+    res.send(addListResult);
 }
 
 module.exports.putEditListById = async (req, res) => {
-    res.send('Put Edit List By Id');
+
+    const editListResult = await List.editById(req.params.id, req.body.name);
+
+    res.send(editListResult);
 }
 
 module.exports.deleteListById = async (req, res) => {
-    res.send('Delete List By Id');
+
+    const deleteListResult = await List.deleteById(listId);
+
+    res.send(deleteListResult);
 }
 //
