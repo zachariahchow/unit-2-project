@@ -32,6 +32,15 @@ module.exports = class Gear {
         return rows;
     }
 
+    static async getByType(userId, type) {
+
+        const query = `SELECT * FROM gear WHERE user_id=${user_id} AND type='${type}'`;
+        const { rows } = await db.query(query);
+
+        return rows;
+
+    }
+
     static async updateById(gearId, name, type, img, notes) {
         const query = `UPDATE gear SET name = '${name}', type = '${type}', img_link = '${img}', notes = '${notes}' WHERE id=${gearId} RETURNING *`
 
