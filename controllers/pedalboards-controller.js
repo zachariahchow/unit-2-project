@@ -17,7 +17,7 @@ module.exports.getPedalboardById = async (req, res) => {
 
     console.log(allPedalsResult);
 
-    const getPedalboardResult = await Pedalboard.getById(req.session.userId);
+    const getPedalboardResult = await Pedalboard.getById(req.params.id);
 
     const getPedalboardPedalsResult = await Pedalboard.getAllPedals(req.session.userId, req.params.id);
 
