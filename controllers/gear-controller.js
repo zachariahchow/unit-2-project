@@ -22,7 +22,7 @@ module.exports.getGearById = async (req, res) => {
 //Consider turning these into AJAX calls to internalAPI endpoints, manipulate DOM rather than render new page
 module.exports.postAddGear = async (req, res) => {
 
-    newGear = new Gear(
+    const newGear = new Gear(
         req.session.userId,
         req.body.name,
         req.body.type,
