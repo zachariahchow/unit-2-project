@@ -43,6 +43,7 @@ class AllGear extends React.Component {
                             <div className="filter__wrapper">
                                 <h2 className="filter__header">Filter By Type:</h2>
                                 <select className="filter__select" name="type">
+                                    <option value="all" className="add-form__option"></option>
                                     <option value="guitar" className="filter__option guitar-option">Guitar/Bass</option>
                                     <option value="pedal" className="filter__option pedal-option">Guitar/Bass Pedals</option>
                                     <option value="amp" className="filter__option amp-option">Amplifiers & Monitors</option>
