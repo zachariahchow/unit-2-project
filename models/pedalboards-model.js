@@ -15,8 +15,8 @@ module.exports = class Pedalboard {
         return rows;
     }
 
-    static async getAll() {
-        const query = `SELECT * FROM pedalboards where user_id=${req.session.userId}`
+    static async getAll(userId) {
+        const query = `SELECT * FROM pedalboards where user_id=${userId}`
         const { rows } = await db.query(query);
 
         return rows;
@@ -24,6 +24,22 @@ module.exports = class Pedalboard {
 
     static async getById(pedalboardId) {
         const query = `SELECT * FROM pedalboards WHERE id=${pedalboardId}`;
+        const { rows } = await db.query(query);
+
+        return rows;
+    }
+
+    static async editById(userId, pedalboardId) {
+
+        const query = `UPDATE pedalboards SET name = '${name}' WHERE id=${pedalboardId} AND user_id ='${userId}'RETURNING *`;
+
+        const { rows } = await db.query(query);
+
+        return rows;
+    }
+
+    static async deleteById(pedalboardId) {
+        const query = `DELETE from pedalboards WHERE id=${pedalboardId} RETURNING *`;
         const { rows } = await db.query(query);
 
         return rows;
