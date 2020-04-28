@@ -23,6 +23,10 @@ const nav = (props) => {
                     <a href={`${props.link}`} className="nav__link ">{props.linklabel}</a>
                 </div>
         )
+    } else {
+        return (
+            <div className="nav"></div>
+        )
     }
 }
 
