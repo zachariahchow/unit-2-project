@@ -40,7 +40,8 @@ typeFilterSelect.addEventListener('change', async () => {
         console.log(response);
         response.forEach(gear => {
             gearContainer = document.createElement('div');
-            gearContainer.setAttribute("key", gear.id);
+            gearContainer.setAttribute('key', gear.id);
+            gearContainer.classList.add('single-gear__container');
             gearContainer.innerHTML =
                 `<div className="single-gear__img-container">
                         <img src=${gear["img_link"]} alt=${gear.name} className="single-gear__img"/>
