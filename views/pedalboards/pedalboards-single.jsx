@@ -17,7 +17,7 @@ class SinglePedalboard extends React.Component {
         //     </div>)
         // })
 
-        const pedalsOptions = this.props.allUnaddedPedals.map(pedal => <option value={pedal.name} pedal-id={pedal.id} className="pedal-option">{pedal.name}</option>)
+        const pedalsOptions = this.props.allUnaddedPedals.map(pedal => <option value={pedal.id} data-pedal-name={pedal.name} className="pedal-option">{pedal.name}</option>)
 
 
         const pedalsListItems = this.props.singlePedalboardPedals
@@ -39,14 +39,16 @@ class SinglePedalboard extends React.Component {
 
                 <body>
                     <Header />
+                    <script defer src='./js/util/send-http-request.js' />
+                    <script defer src='./js/pedalboards-single.js' />
                     <main>
                         <div className="single-pedalboard__container single-display">
                             <p className="single-pedalboard__name">{this.props.singlePedalboard.name}</p>
                             <div className="single-pedalboard__pedals-list">
-                                <select className="single-pedalboard__pedals-list-select">
+                                <select className="single-pedalboard__pedals-list-select" data-pedalboard-id={this.props.singlePedalboard.id}>
                                     {pedalsOptions}
                                 </select>
-                                <button type="button" data-pedalboard-id={this.props.singlePedalboard.id} className="edit-form__pedals-list-add-btn">
+                                <button type="button" data-pedalboard-id={this.props.singlePedalboard.id} className="single-pedalboard__pedals-list-add-btn">
                                 Add Pedal</button>
                                 {pedalsListItems}
                             </div>

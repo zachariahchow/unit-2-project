@@ -7,6 +7,8 @@ const pedalboardsController = require('../controllers/pedalboards-controller.js'
 
 router.use('/:route', express.static(path.join(__dirname, '..', '/public/')));
 
+router.post('/:id/:gearId', pedalboardsController.postAddPedalToPedalboard);
+
 router.get('/:id', pedalboardsController.getPedalboardById);
 
 router.delete('/:id', pedalboardsController.deletePedalboardById);

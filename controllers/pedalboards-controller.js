@@ -44,7 +44,7 @@ module.exports.postAddPedalboard = async (req, res) => {
 
     const addPedalboardResult = await newPedalboard.add()
 
-    res.send(addPedalboardResult);
+    res.json(addPedalboardResult);
 }
 
 module.exports.putEditPedalboardById = async (req, res) => {
@@ -59,5 +59,14 @@ module.exports.deletePedalboardById = async (req, res) => {
     const deletePedalboardResult = await Pedalboard.deleteById(req.params.id);
 
     res.send(deletePedalboardResult);
+}
+
+//
+
+module.exports.postAddPedalToPedalboard = async (req, res) => {
+
+    const addPedalboardResult = await Gear.addToPedalboard(req.params.id, req.params.gearId, req.body.gearOrder);
+
+    res.json(addPedalboardResult);
 }
 //

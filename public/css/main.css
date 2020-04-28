@@ -28,15 +28,20 @@ main {
 /*TEMPORARY*/
 
 .single-pedal__img-container {
-		width: 300px;
+		width: 500px;
 		height: auto;
 }
 
 img {
-		width: 100%;
-		max-width: 300px;
+		width: 90%;
+		max-width: 500px;
 		height: auto;
 		object-fit: cover;
+}
+
+button {
+		margin: 8px;
+		padding: 10px 30px;
 }
 
 /**/
@@ -133,10 +138,11 @@ img {
 }
 
 .single-gear__container {
+		height: 80vh;
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-around;
+		justify-content: center;
 		align-items: center;
 		margin: 12px 0;
 }
