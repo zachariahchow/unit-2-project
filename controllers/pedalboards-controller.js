@@ -67,7 +67,12 @@ module.exports.postAddPedalToPedalboard = async (req, res) => {
 
     const addPedalToPedalboardResult = await Gear.addToPedalboard(req.params.id, req.params.gearId, req.body.gearOrder);
 
-    res.json(addPedalToPedalboardResult);
+    const newGearPedal = await Gear.getById(req.params.gearId)
+
+    res.json({
+        pedalboard: addPedalToPedalboardResult[0],
+        newPedal: newGearPedal[0]
+    });
 }
 
 module.exports.deletePedalFromPedalboard = async (req, res) => {

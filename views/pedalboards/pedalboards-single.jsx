@@ -22,8 +22,8 @@ class SinglePedalboard extends React.Component {
 
         const pedalsListItems = this.props.singlePedalboardPedals
             .map(pedal =>
-                <div className="single-pedalboard__pedal-wrapper">
-                    <li data-pedal-pedalboard-id={pedal.id} className="edit-form__pedals-list-item">
+                <div className={`single-pedalboard__pedal-wrapper pedal-wrapper-${pedal['gear_id']}`} data-gear-id={pedal["gear_id"]}>
+                    <li data-pedal-pedalboard-id={pedal['pedalboard_id']} className="edit-form__pedals-list-item">
                         {pedal.name}
                     </li>
                     <div className="single-pedal__img-container">
