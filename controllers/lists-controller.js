@@ -103,4 +103,26 @@ module.exports.deleteListById = async (req, res) => {
 
     res.send(deleteListResult);
 }
-//
+
+module.exports.postAddGearToList = async (req, res) => {
+
+    const addGearToListResult = await Gear.addToList(req.params.id, req.params.gearId);
+
+    const newGearInList = await Gear.getById(req.params.gearId)
+
+    res.json({
+        listGear: addGearToListResult[0],
+        newGear: newGearInList[0]
+    });
+}
+
+module.exports.postAddPedalboardToList = async (req, res) => {
+    const addPedalboardToListResult = await Pedalboard.addToList(req.params.id, req.params.pedalboardId);
+
+    const newPedalboardInList = await Pedalboard.getById(req.params.pedalboardId)
+
+    res.json({
+        listPedalboardr: addPedalboardToListResult[0],
+        newPedalboard: newPedalboardInList[0]
+    });
+}
