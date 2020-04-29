@@ -1,5 +1,7 @@
 const db = require('../db.js');
 const List = require('../models/lists-model');
+const Pedalboard = require('../models/pedalboards-model');
+const Gear = require('../models/gear-model');
 
 module.exports.getAllLists = async (req, res) => {
 
@@ -12,7 +14,70 @@ module.exports.getListById = async (req, res) => {
 
     const getListResult = await List.getById(req.params.id);
 
-    res.send(getListResult);
+    const getListPedalboardsResult = await List.getListPedalboards(req.params.id);
+
+    let listPedalboardsPedals = [];
+
+    for (const pedalboard of getListPedalboardsResult) {
+
+        const getAllPedalsResult = await Pedalboard.getAllPedals(req.session.userId, pedalboard['pedalboard_id']);
+
+        listPedalboardsPedals.push({
+            id: pedalboard['pedalboard_id'],
+            name: pedalboard.name,
+            pedals: getAllPedalsResult
+        })
+    }
+
+    const getListGearResult = await List.getListGear(req.params.id);
+
+    const getAllGearResult = await Gear.getAll(req.session.userId);
+
+    const getAllPedalboardsResult = await Pedalboard.getAll(req.session.userId);
+
+    // console.log(getAllGearResult);
+    // console.log(getAllPedalboardsResult);
+    // console.log(getListPedalboardsResult);
+    // console.log(getListResult[0]);
+    console.log(getListGearResult);
+    console.log(listPedalboardsPedals);
+
+    const allGearWithoutListGear = getAllGearResult
+        .reduce((resultsArr, gear) => {
+
+            listPedalboardsPedals
+                .forEach(pedalboard => {
+                    if (!pedalboard.pedals
+                        .find(pedal => pedal['gear_id'] == gear.id)) {
+                        resultsArr.push(gear);
+                    }
+                })
+            return resultsArr;
+
+        }, []).filter(gear => {
+
+            return (!getListGearResult
+                .find(listGear => listGear['gear_id'] == gear.id));
+
+        });
+
+    const allPedalboardsWithoutListPedalboards = getAllPedalboardsResult
+        .filter(pedalboard => {
+            return (!getListPedalboardsResult.find(listPb =>
+                listPb['pedalboard_id'] == pedalboard.id
+            ))
+        });
+
+    // console.log(allGearWithoutListGear);
+    // console.log(allPedalboardsWithoutListPedalboards);
+
+    res.render('./lists/lists-single', {
+        allGear: allGearWithoutListGear,
+        allPedalboards: allPedalboardsWithoutListPedalboards,
+        singleList: getListResult[0],
+        listGear: getListGearResult,
+        listPedalboards: listPedalboardsPedals
+    });
 }
 
 //Consider turning these into AJAX calls to internalAPI endpoints, manipulate DOM rather than render new page

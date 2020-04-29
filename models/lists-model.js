@@ -45,4 +45,19 @@ module.exports = class List {
         return rows;
     }
 
+    static async getListGear(listId) {
+
+        const query = `SELECT * FROM lists_gear INNER JOIN gear on lists_gear.gear_id = gear.id WHERE list_id=${listId}`;
+        const { rows } = await db.query(query);
+
+        return rows;
+    }
+
+    static async getListPedalboards(listId) {
+
+        const query = `SELECT * FROM lists_pedalboards INNER JOIN pedalboards on lists_pedalboards.pedalboard_id = pedalboards.id WHERE list_id=${listId}`;
+        const { rows } = await db.query(query);
+
+        return rows;
+    }
 }
