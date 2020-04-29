@@ -23,11 +23,11 @@ class SingleList extends React.Component {
 
         const pedalboardsListItems = this.props.listPedalboards
             .map(pedalboard =>
-                <div className={`single-pedalboard__wrapper pedalboard-wrapper-${pedalboard['pedalboard_id']}`}>
+                <div className={`single-pedalboard__wrapper pedalboard-wrapper-${pedalboard.id}`}>
                     <li className="pedalboard-list-item">
                         {pedalboard.name}
                     </li>
-                    <button type="button" data-pedalboard-id={pedalboard['pedalboard_id']} className="single-pedalboard__list-item-delete-btn">Delete</button>
+                    <button type="button" data-pedalboard-id={pedalboard.id} className="single-pedalboard__list-item-delete-btn">Delete</button>
                 </div>
             )
 

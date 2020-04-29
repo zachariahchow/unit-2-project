@@ -8,6 +8,15 @@ const gearList = document.querySelector('.single-list__all-gear-wrapper');
 const pedalboardsList = document.querySelector('.single-list__all-pedalboards-wrapper');
 
 const deleteGearBtns = document.querySelectorAll('.single-gear__list-item-delete-btn');
+const deletePedalboardBtn = document.querySelector('.single-pedalboard__list-item-delete-btn');
+
+// window.addEventListener('load',
+//     (ev) => {
+//         if (pedalboardsList.hasChildNodes()) {
+//             addPedalboardBtn.classList.add('display-none');
+//             pedalboardsSelect.classList.add('display-none');
+//         }
+//     })
 
 deleteGearBtns.forEach(btn => {
     btn.addEventListener('click', async (ev) => {
@@ -40,14 +49,14 @@ addGearBtn.addEventListener('click', async () => {
     newGearEl.classList.add(`gear-wrapper-${response.newGear.id}`);
     newGearEl.setAttribute('data-gear-id', `${response.newGear.id}`);
     newGearEl.innerHTML = `
-    <div className=single-gear__wrapper gear-wrapper-${response.newGear.id} data-gear-id=${response.newGear.id}>
-        <li className="gear-list-item">
+    <div class=single-gear__wrapper gear-wrapper-${response.newGear.id} data-gear-id=${response.newGear.id}>
+        <li class="gear-list-item">
             ${response.newGear.name}
         </li>
-        <div className="single-gear__img-container">
-            <img src=${response.newGear["img_link"]} alt=${response.newGear.name} className="single-pedal__img"/>
+        <div class="single-gear__img-container">
+            <img src=${response.newGear["img_link"]} alt=${response.newGear.name} class="single-pedal__img"/>
         </div>
-        <button type="button" data-list-id=${response.listGear['list_id']} data-gear-id=${response.newGear.id} className="single-gear__list-item-delete-btn">Delete</button>
+        <button type="button" data-list-id=${response.listGear['list_id']} data-gear-id=${response.newGear.id} class="single-gear__list-item-delete-btn">Delete</button>
     </div>`
 
 
@@ -70,4 +79,66 @@ addGearBtn.addEventListener('click', async () => {
         gearSelect.insertAdjacentHTML('beforeend', addedGearOptionHTML);
 
     })
+})
+
+if (deletePedalboardBtn)
+    deletePedalboardBtn.addEventListener('click', async (ev) => {
+        addPedalboardBtn.classList.remove('display-none');
+        pedalboardsSelect.classList.remove('display-none');
+
+        const response = await sendHttpRequest('DELETE', `/lists/${pedalboardsSelect.dataset.listId}/pedalboards/${ev.target.dataset.pedalboardId}`);
+
+        const deletedPedalboard = document.querySelector(`.pedalboard-wrapper-${ev.target.dataset.pedalboardId}`)
+
+        pedalboardsList.removeChild(deletedPedalboard);
+
+        console.log(response);
+
+        addedPedalboardOptionHTML = `<option value=${response.deletedPedalboard.id} data-pedalboard-name=${response.deletedPedalboard.name} class="pedalboard-option">${response.deletedPedalboard.name}</option>`
+
+        pedalboardsSelect.insertAdjacentHTML('beforeend', addedPedalboardOptionHTML);
+    })
+
+
+addPedalboardBtn.addEventListener('click', async (ev) => {
+    addPedalboardBtn.classList.add('display-none');
+    pedalboardsSelect.classList.add('display-none');
+
+    const response = await sendHttpRequest('POST', `/lists/${pedalboardsSelect.dataset.listId}/pedalboards/${pedalboardsSelect.value}`);
+
+    console.log(response);
+
+    const deletedOption = document.querySelector(`.pedalboard-option[value="${response.newPedalboard.id}"]`);
+
+    pedalboardsSelect.removeChild(deletedOption);
+
+    const addedPedalboardHTML = `
+        <div class="single-pedalboard__wrapper pedalboard-wrapper-${response.newPedalboard.id}">
+            <li class="pedalboard-list-item">
+                ${response.newPedalboard.name}
+            </li>
+            <button type="button" data-pedalboard-id=${response.newPedalboard.id} class="single-pedalboard__list-item-delete-btn">Delete</button>
+        </div>`
+
+    pedalboardsList.insertAdjacentHTML('beforeend', addedPedalboardHTML);
+
+    const newDeletePedalboardBtn = document.querySelector('.single-pedalboard__list-item-delete-btn');
+
+    newDeletePedalboardBtn.addEventListener('click', async (ev) => {
+        addPedalboardBtn.classList.remove('display-none');
+        pedalboardsSelect.classList.remove('display-none');
+
+        const response = await sendHttpRequest('DELETE', `/lists/${pedalboardsSelect.dataset.listId}/pedalboards/${ev.target.dataset.pedalboardId}`);
+
+        const deletedPedalboard = document.querySelector(`.pedalboard-wrapper-${ev.target.dataset.pedalboardId}`)
+
+        pedalboardsList.removeChild(deletedPedalboard);
+
+        console.log(response);
+
+        addedPedalboardOptionHTML = `<option value=${response.deletedPedalboard.id} data-pedalboard-name=${response.deletedPedalboard.name} class="pedalboard-option">${response.deletedPedalboard.name}</option>`
+
+        pedalboardsSelect.insertAdjacentHTML('beforeend', addedPedalboardOptionHTML);
+    });
+
 })

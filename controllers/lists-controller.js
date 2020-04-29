@@ -127,7 +127,7 @@ module.exports.postAddPedalboardToList = async (req, res) => {
     const newPedalboardInList = await Pedalboard.getById(req.params.pedalboardId)
 
     res.json({
-        listPedalboardr: addPedalboardToListResult[0],
+        listPedalboard: addPedalboardToListResult[0],
         newPedalboard: newPedalboardInList[0]
     });
 }

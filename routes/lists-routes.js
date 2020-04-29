@@ -9,11 +9,11 @@ router.use('/:route', express.static(path.join(__dirname, '..', '/public/')));
 
 router.post('/:id/gear/:gearId', listsController.postAddGearToList);
 
-router.post('/:id/pedalboard/:pedalboardId', listsController.postAddPedalboardToList);
+router.post('/:id/pedalboards/:pedalboardId', listsController.postAddPedalboardToList);
 
 router.delete('/:id/gear/:gearId', listsController.deleteGearFromList);
 
-router.delete('/:id/pedalboard/:pedalboardId', listsController.deletePedalboardFromList);
+router.delete('/:id/pedalboards/:pedalboardId', listsController.deletePedalboardFromList);
 
 router.get('/:id', listsController.getListById);
 
