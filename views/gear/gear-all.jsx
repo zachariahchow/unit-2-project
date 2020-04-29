@@ -14,7 +14,7 @@ class AllGear extends React.Component {
                 <div className="single-gear__img-container">
                     <img src={gear["img_link"]} alt={gear.name} className="single-gear__img"/>
                 </div>
-                <input contentEditable="true" className="single-gear__name" data-gear-id={gear.id} spellcheck="false" defaultValue={`${gear.name}`}></input>
+                <input className="single-gear__name input-primary" data-gear-id={gear.id} spellcheck="false" defaultValue={`${gear.name}`}></input>
                 <button className="single-gear__delete-btn btn-secondary" data-gear-id={gear.id}>DELETE</button>
                 <div className={`single-gear__more more-${gear.id} display-none`}>
                     <h4 className="single-gear__select-label">Type:</h4>
@@ -43,6 +43,7 @@ class AllGear extends React.Component {
                     <Header />
                     <Nav link="/pedalboards" linklabel="Pedalboards" link2="/lists" link2label="Lists" link3="/" link3label="Home"/>
                     <main>
+                        <h2 className="page-header">GEAR</h2>
                         <form method="POST" action={`/gear`} className="add-form">
                             <h2 className="add-form__header">Add Item</h2>
                             <input className="add-form__name-input input-primary" type="text" name="name" placeholder="Name" maxlength="100"/>

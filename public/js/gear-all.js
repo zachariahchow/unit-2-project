@@ -88,7 +88,7 @@ addItemBtn.addEventListener('click', async () => {
         `<div class="single-gear__img-container">
                 <img src=${gear["img_link"]} alt=${gear.name} class="single-gear__img"/>
             </div>
-        <input class="single-gear__name" data-gear-id="${gear.id}" spellcheck="false" value="${gear.name}"></input>
+        <input class="single-gear__name input-primary" data-gear-id="${gear.id}" spellcheck="false" value="${gear.name}"></input>
         <button class="single-gear__delete-btn btn-secondary" data-gear-id=${gear.id}>DELETE</button>
 
         <div class="single-gear__more more-${gear.id} display-none">
@@ -100,7 +100,7 @@ addItemBtn.addEventListener('click', async () => {
                 <option value="drums" class="single-gear__option">Drums & Percussion</option>
                 <option value="keyboard" class="single-gear__option">Keyboards/Synths</option>
                 <option value="accessory" class="single-gear__option">Accessories</option>
-                <input type="text" class="single-gear__img-input img-input-${gear.id}" value="${gear["img_link"]}" data-gear-id="${gear.id}"/>
+                <input type="text" class="single-gear__img-input img-input-${gear.id} input-primary" value="${gear["img_link"]}" data-gear-id="${gear.id}"/>
             </select>
 
         </div>
@@ -154,7 +154,7 @@ typeFilterSelect.addEventListener('change', async () => {
                 `<div class="single-gear__img-container">
                         <img src=${gear["img_link"]} alt=${gear.name} class="single-gear__img"/>
                     </div>
-                <input class="single-gear__name" data-gear-id="${gear.id}" spellcheck="false" value="${gear.name}"></input>
+                <input class="single-gear__name input-primary" data-gear-id="${gear.id}" spellcheck="false" value="${gear.name}"></input>
                 <button class="single-gear__delete-btn btn-secondary" data-gear-id="${gear.id}">DELETE</button>
 
                 <div class="single-gear__more more-${gear.id} display-none">
@@ -166,7 +166,7 @@ typeFilterSelect.addEventListener('change', async () => {
                         <option value="drums" class="single-gear__option">Drums & Percussion</option>
                         <option value="keyboard" class="single-gear__option">Keyboards/Synths</option>
                         <option value="accessory" class="single-gear__option">Accessories</option>
-                        <input type="text" class="single-gear__img-input img-input-${gear.id}" value="${gear["img_link"]}" data-gear-id="${gear.id}"/>
+                        <input type="text" class="single-gear__img-input img-input-${gear.id} input-primary" value="${gear["img_link"]}" data-gear-id="${gear.id}"/>
                     </select>
 
                 </div>
