@@ -7,6 +7,24 @@ const pedalboardsSelect = document.querySelector('.single-list__pedalboards-list
 const gearList = document.querySelector('.single-list__all-gear-wrapper');
 const pedalboardsList = document.querySelector('.single-list__all-pedalboards-wrapper');
 
+const deleteGearBtns = document.querySelectorAll('.single-gear__list-item-delete-btn');
+
+deleteGearBtns.forEach(btn => {
+    btn.addEventListener('click', async (ev) => {
+        const response = await sendHttpRequest('DELETE', `/lists/${gearSelect.dataset.listId}/gear/${ev.target.dataset.gearId}`);
+
+        const deletedGear = document.querySelector(`.gear-wrapper-${ev.target.dataset.gearId}`)
+
+        gearList.removeChild(deletedGear);
+
+        console.log(response);
+
+        addedGearOptionHTML = `<option value=${response.deletedGear.id} data-gear-name=${response.deletedGear.name} class="gear-option">${response.deletedGear.name}</option>`
+
+        gearSelect.insertAdjacentHTML('beforeend', addedGearOptionHTML);
+    })
+})
+
 addGearBtn.addEventListener('click', async () => {
 
     const response = await sendHttpRequest('POST', `/lists/${gearSelect.dataset.listId}/gear/${gearSelect.value}`);
@@ -34,4 +52,22 @@ addGearBtn.addEventListener('click', async () => {
 
 
     gearList.append(newGearEl);
+
+    const newDeleteGearBtn = document.querySelector(`button[data-gear-id='${response.newGear.id}']`);
+
+    newDeleteGearBtn.addEventListener('click', async (ev) => {
+
+        const response = await sendHttpRequest('DELETE', `/lists/${gearSelect.dataset.listId}/gear/${ev.target.dataset.gearId}`);
+
+        const deletedGear = document.querySelector(`.gear-wrapper-${ev.target.dataset.gearId}`)
+
+        gearList.removeChild(deletedGear);
+
+        console.log(response);
+
+        addedGearOptionHTML = `<option value=${response.deletedGear.id} data-gear-name=${response.deletedGear.name} class="gear-option">${response.deletedGear.name}</option>`
+
+        gearSelect.insertAdjacentHTML('beforeend', addedGearOptionHTML);
+
+    })
 })

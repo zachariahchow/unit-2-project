@@ -11,6 +11,10 @@ router.post('/:id/gear/:gearId', listsController.postAddGearToList);
 
 router.post('/:id/pedalboard/:pedalboardId', listsController.postAddPedalboardToList);
 
+router.delete('/:id/gear/:gearId', listsController.deleteGearFromList);
+
+router.delete('/:id/pedalboard/:pedalboardId', listsController.deletePedalboardFromList);
+
 router.get('/:id', listsController.getListById);
 
 router.delete('/:id', listsController.deleteListById);

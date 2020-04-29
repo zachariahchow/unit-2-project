@@ -126,3 +126,27 @@ module.exports.postAddPedalboardToList = async (req, res) => {
         newPedalboard: newPedalboardInList[0]
     });
 }
+
+module.exports.deleteGearFromList = async (req, res) => {
+
+    const deleteGearFromListResult = await Gear.removeFromList(req.params.id, req.params.gearId);
+
+    const deletedGear = await Gear.getById(req.params.gearId)
+
+    res.json({
+        listGear: deleteGearFromListResult[0],
+        deletedGear: deletedGear[0]
+    });
+}
+
+module.exports.deletePedalboardFromList = async (req, res) => {
+
+    const deletePedalboardFromListResult = await Pedalboard.removeFromList(req.params.id, req.params.pedalboardId);
+
+    const deletedPedalboard = await Pedalboard.getById(req.params.pedalboardId)
+
+    res.json({
+        listPedalboard: deletePedalboardFromListResult[0],
+        deletedPedalboard: deletedPedalboardl[0]
+    });
+}
