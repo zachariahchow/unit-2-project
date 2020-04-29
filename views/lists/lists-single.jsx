@@ -21,6 +21,16 @@ class SingleList extends React.Component {
                 </div>
             )
 
+        const pedalboardsListItems = this.props.listPedalboards
+            .map(pedalboard =>
+                <div className={`single-pedalboard__wrapper pedal-wrapper-${pedalboard['pedalboard_id']}`}>
+                    <li className="pedalboard-list-item">
+                        {pedalboard.name}
+                    </li>
+                    <button type="button" data-pedalboard-id={pedalboard['pedalboard_id']} className="single-pedalboard__list-item-delete-btn">Delete</button>
+                </div>
+            )
+
         const gearOptions = this.props.allGear.map(gear => <option value={gear.id} data-gear-name={gear.name} className="gear-option">{gear.name}</option>)
 
         const pedalboardsOptions = this.props.allPedalboards.map(pedalboard => <option value={pedalboard.id} data-pedalboard-name={pedalboard.name} className="pedalboard-option">{pedalboard.name}</option>)
@@ -47,7 +57,14 @@ class SingleList extends React.Component {
                                 </select>
                                 <button type="button" data-list-id={this.props.singleList.id} className="single-list__pedals-list-add-btn">
                                 Add Pedalboard</button>
-                                {gearListItems}
+                                <div className="single-list__all-pedalboards-wrapper">
+                                    <h3 className="single-list__all-pedalboards-wrapper-header">Pedalboards</h3>
+                                    {pedalboardsListItems}
+                                </div>
+                                <div className="single-list__all-gear-wrapper">
+                                    <h3 className="single-list__all-gear-wrapper-header">Gear</h3>
+                                    {gearListItems}
+                                </div>
                             </div>
                             <div className ="list__edit-delete-links">
                                 <a href="./edit" className="list__edit-link"><p>Edit</p></a>
