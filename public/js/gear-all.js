@@ -1,6 +1,7 @@
 // See More Button
 
 const seeMoreBtns = document.querySelectorAll('.single-gear__more-btn');
+const gearWrapper = document.querySelector('.all-single-gear__wrapper');
 
 seeMoreBtnClickHandler = (ev) => {
     const gearType = ev.target.dataset.gearType;
@@ -27,12 +28,25 @@ seeMoreBtns.forEach((btn) => {
     btn.addEventListener('click', seeMoreBtnClickHandler);
 })
 
+//Delete Gear Btns
+
+const deleteGearBtns = document.querySelectorAll('.single-gear__delete-btn');
+deleteGearBtns.forEach(btn => {
+    btn.addEventListener('click', async (ev) => {
+        const response = await sendHttpRequest('DELETE', `/gear/${ev.target.dataset.gearId}`);
+
+        const deletedGear = document.querySelector(`.single-gear__container[data-gear-id="${ev.target.dataset.gearId}"]`);
+
+        gearWrapper.removeChild(deletedGear);
+    })
+})
+
 
 //Add Gear Item
 
 const addItemBtn = document.querySelector('.add-form__submit-btn');
 const addForm = document.querySelector('.add-form');
-const gearWrapper = document.querySelector('.all-single-gear__wrapper');
+
 
 addItemBtn.addEventListener('click', async () => {
     const response = await sendHttpRequest('POST', `/gear`, {
@@ -45,12 +59,15 @@ addItemBtn.addEventListener('click', async () => {
     const gear = response[0];
 
     gearContainer = document.createElement('div');
-    gearContainer.setAttribute("key", gear.id);
+    gearContainer.classList.add('single-gear__container');
+    gearContainer.setAttribute('key', gear.id);
+    gearContainer.setAttribute('data-gear-id', gear.id);
     gearContainer.innerHTML =
         `<div class="single-gear__img-container">
                 <img src=${gear["img_link"]} alt=${gear.name} class="single-gear__img"/>
             </div>
         <a href='./gear/${gear.id}' class="single-gear__name">${gear.name}</a>
+        <button class="single-gear__delete-btn btn-secondary" data-gear-id=${gear.id}>DELETE</button>
 
         <div class="single-gear__more more-${gear.id} display-none">
             <h4 class="single-gear__select-label">Type:</h4>
@@ -66,11 +83,21 @@ addItemBtn.addEventListener('click', async () => {
 
         </div>
 
-        <button data-gear-id=${gear.id} data-gear-type=${gear.type} class="single-gear__more-btn more-btn-${gear.id}">More</button>`;
+        <button data-gear-id=${gear.id} data-gear-type=${gear.type} class="single-gear__more-btn more-btn-${gear.id} btn-small">More</button>`;
 
     gearWrapper.append(gearContainer);
 
     document.querySelector(`.more-btn-${gear.id}`).addEventListener('click', seeMoreBtnClickHandler);
+
+    const deleteBtn = document.querySelector(`.single-gear__delete-btn[data-gear-id="${gear.id}"]`);
+
+    deleteBtn.addEventListener('click', async (ev) => {
+        const response = await sendHttpRequest('DELETE', `/gear/${ev.target.dataset.gearId}`);
+
+        const deletedGear = document.querySelector(`.single-gear__container[data-gear-id="${ev.target.dataset.gearId}"]`);
+
+        gearWrapper.removeChild(deletedGear);
+    })
 })
 
 //Filter by Type
@@ -88,12 +115,14 @@ typeFilterSelect.addEventListener('change', async () => {
         response.forEach(gear => {
             gearContainer = document.createElement('div');
             gearContainer.setAttribute('key', gear.id);
+            gearContainer.setAttribute('data-gear-id', gear.id)
             gearContainer.classList.add('single-gear__container');
             gearContainer.innerHTML =
                 `<div class="single-gear__img-container">
                         <img src=${gear["img_link"]} alt=${gear.name} class="single-gear__img"/>
                     </div>
                 <a href='./gear/${gear.id}' class="single-gear__name">${gear.name}</a>
+                <button class="single-gear__delete-btn btn-secondary" data-gear-id="${gear.id}">DELETE</button>
 
                 <div class="single-gear__more more-${gear.id} display-none">
                     <h4 class="single-gear__select-label">Type:</h4>
@@ -109,11 +138,21 @@ typeFilterSelect.addEventListener('change', async () => {
 
                 </div>
 
-                <button data-gear-id=${gear.id} data-gear-type=${gear.type} class="single-gear__more-btn more-btn-${gear.id}">More</button>`;
+                <button data-gear-id=${gear.id} data-gear-type=${gear.type} class="single-gear__more-btn more-btn-${gear.id} btn-small">More</button>`;
 
             gearWrapper.append(gearContainer);
 
             document.querySelector(`.more-btn-${gear.id}`).addEventListener('click', seeMoreBtnClickHandler);
+
+            const deleteBtn = document.querySelector(`.single-gear__delete-btn[data-gear-id="${gear.id}"]`);
+
+            deleteBtn.addEventListener('click', async (ev) => {
+                const response = await sendHttpRequest('DELETE', `/gear/${ev.target.dataset.gearId}`);
+
+                const deletedGear = document.querySelector(`.single-gear__container[data-gear-id="${ev.target.dataset.gearId}"]`);
+
+                gearWrapper.removeChild(deletedGear);
+            })
         })
     }
 

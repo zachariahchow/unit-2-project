@@ -10,11 +10,12 @@ class AllGear extends React.Component {
 
         const gearInfo = this.props.allGear.map(gear =>
 
-            <div className="single-gear__container" key={gear.id}>
+            <div className="single-gear__container" key={gear.id} data-gear-id={gear.id}>
                 <div className="single-gear__img-container">
                     <img src={gear["img_link"]} alt={gear.name} className="single-gear__img"/>
                 </div>
                 <a href={`./gear/${gear.id}`} className="single-gear__name">{gear.name}</a>
+                <button className="single-gear__delete-btn btn-secondary" data-gear-id={gear.id}>DELETE</button>
                 <div className={`single-gear__more more-${gear.id} display-none`}>
                     <h4 className="single-gear__select-label">Type:</h4>
                     <select data-gear-id={gear.id} className={`single-gear__select select-${gear.id}`} name="type">
@@ -59,7 +60,7 @@ class AllGear extends React.Component {
                             <div className="filter__wrapper">
                                 <h2 className="filter__header">Filter By Type:</h2>
                                 <select className="filter__select" name="type">
-                                    <option value="all" className="add-form__option"></option>
+                                    <option value="all" className="filter__option all-option">All</option>
                                     <option value="guitar" className="filter__option guitar-option">Guitar/Bass</option>
                                     <option value="pedal" className="filter__option pedal-option">Guitar/Bass Pedals</option>
                                     <option value="amp" className="filter__option amp-option">Amplifiers & Monitors</option>

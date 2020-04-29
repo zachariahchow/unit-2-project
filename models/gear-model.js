@@ -57,7 +57,7 @@ module.exports = class Gear {
     }
 
     static async deleteById(gearId) {
-        const query = `DELETE from gear WHERE id=${gearId}`;
+        const query = `DELETE from gear WHERE id=${gearId} RETURNING *`;
         const { rows } = await db.query(query);
 
         return rows;

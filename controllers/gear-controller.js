@@ -50,7 +50,7 @@ module.exports.deleteGearById = async (req, res) => {
 
     const deleteGearResult = await Gear.deleteById(req.params.id);
 
-    res.send(deleteGearResult);
+    res.json(deleteGearResult);
 
 }
 //
