@@ -82,7 +82,7 @@ module.exports = class Gear {
 
     static async addToList(listId, gearId) {
 
-        const queryT = `INSERT INTO lists_gear (list_id, gear_id, ) VALUES($1, $2) RETURNING *`;
+        const queryT = `INSERT INTO lists_gear (list_id, gear_id) VALUES($1, $2) RETURNING *`;
         const queryV = [listId, gearId];
         const { rows } = await db.query(queryT, queryV);
 
