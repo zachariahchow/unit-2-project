@@ -56,6 +56,14 @@ module.exports = class Gear {
         return rows;
     }
 
+    static async updateSingleFieldById(gearId, field, fieldValue) {
+        const query = `UPDATE gear SET ${field}='${fieldValue}' WHERE id=${gearId} RETURNING *`
+
+        const { rows } = await db.query(query);
+
+        return rows;
+    }
+
     static async deleteById(gearId) {
         const query = `DELETE from gear WHERE id=${gearId} RETURNING *`;
         const { rows } = await db.query(query);

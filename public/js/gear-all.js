@@ -1,9 +1,31 @@
+//Edit Gear Fields
+const gearNameFields = document.querySelectorAll('.single-gear__name');
+const gearSelects = document.querySelectorAll('.single-gear__select');
+const gearImgLinkFields = document.querySelectorAll('.single-gear__img-input');
+
+const onChangeHandler = async function(gearId, prop) {
+    const response = await sendHttpRequest('PUT', `/gear/${gearId}/${prop}`, { field: this.value }, { 'Content-Type': 'application/json' });
+    console.log(this.value);
+}
+
+gearNameFields.forEach(field => {
+    field.addEventListener('change', onChangeHandler.bind(field, field.dataset.gearId, 'name'));
+});
+
+gearSelects.forEach(field => {
+    field.addEventListener('change', onChangeHandler.bind(field, field.dataset.gearId, 'type'));
+});
+
+gearImgLinkFields.forEach(field => {
+    field.addEventListener('change', onChangeHandler.bind(field, field.dataset.gearId, 'img'));
+});
+
 // See More Button
 
 const seeMoreBtns = document.querySelectorAll('.single-gear__more-btn');
 const gearWrapper = document.querySelector('.all-single-gear__wrapper');
 
-seeMoreBtnClickHandler = (ev) => {
+const seeMoreBtnClickHandler = (ev) => {
     const gearType = ev.target.dataset.gearType;
     const gearId = ev.target.dataset.gearId
     const gearOptions = document.querySelectorAll(`.select-${gearId}>option`);
@@ -66,19 +88,19 @@ addItemBtn.addEventListener('click', async () => {
         `<div class="single-gear__img-container">
                 <img src=${gear["img_link"]} alt=${gear.name} class="single-gear__img"/>
             </div>
-        <a href='./gear/${gear.id}' class="single-gear__name">${gear.name}</a>
+        <input class="single-gear__name" data-gear-id="${gear.id}" spellcheck="false" value="${gear.name}"></input>
         <button class="single-gear__delete-btn btn-secondary" data-gear-id=${gear.id}>DELETE</button>
 
         <div class="single-gear__more more-${gear.id} display-none">
             <h4 class="single-gear__select-label">Type:</h4>
-            <select data-gear-id={gear.id} class="single-gear__select select-${gear.id}" name="type">
+            <select data-gear-id=${gear.id} class="single-gear__select select-${gear.id}" name="type">
                 <option value="guitar" class="single-gear__option">Guitar/Bass</option>
                 <option value="pedal" class="single-gear__option">Guitar/Bass Pedals</option>
                 <option value="amp" class="single-gear__option">Amplifiers & Monitors</option>
                 <option value="drums" class="single-gear__option">Drums & Percussion</option>
                 <option value="keyboard" class="single-gear__option">Keyboards/Synths</option>
                 <option value="accessory" class="single-gear__option">Accessories</option>
-                <input type="text" class="single-gear__img-input img-input-${gear.id}" value="${gear["img_link"]}" />
+                <input type="text" class="single-gear__img-input img-input-${gear.id}" value="${gear["img_link"]}" data-gear-id="${gear.id}"/>
             </select>
 
         </div>
@@ -98,6 +120,17 @@ addItemBtn.addEventListener('click', async () => {
 
         gearWrapper.removeChild(deletedGear);
     })
+
+    const gearNameField = document.querySelector(`.single-gear__name[data-gear-id="${gear.id}"]`);
+    const gearSelect = document.querySelector(`.single-gear__select[data-gear-id="${gear.id}"]`);
+    const gearImgLinkField = document.querySelector(`.single-gear__img-input[data-gear-id="${gear.id}"]`);
+
+
+    gearNameField.addEventListener('change', onChangeHandler.bind(gearNameField, gearNameField.dataset.gearId, 'name'));
+
+    gearSelect.addEventListener('change', onChangeHandler.bind(gearSelect, gearSelect.dataset.gearId, 'type'));
+
+    gearImgLinkField.addEventListener('change', onChangeHandler.bind(gearImgLinkField, gearImgLinkField.dataset.gearId, 'img'));
 })
 
 //Filter by Type
@@ -121,19 +154,19 @@ typeFilterSelect.addEventListener('change', async () => {
                 `<div class="single-gear__img-container">
                         <img src=${gear["img_link"]} alt=${gear.name} class="single-gear__img"/>
                     </div>
-                <a href='./gear/${gear.id}' class="single-gear__name">${gear.name}</a>
+                <input class="single-gear__name" data-gear-id="${gear.id}" spellcheck="false" value="${gear.name}"></input>
                 <button class="single-gear__delete-btn btn-secondary" data-gear-id="${gear.id}">DELETE</button>
 
                 <div class="single-gear__more more-${gear.id} display-none">
                     <h4 class="single-gear__select-label">Type:</h4>
-                    <select data-gear-id={gear.id} class="single-gear__select select-${gear.id}" name="type">
+                    <select data-gear-id=${gear.id} class="single-gear__select select-${gear.id}" name="type">
                         <option value="guitar" class="single-gear__option">Guitar/Bass</option>
                         <option value="pedal" class="single-gear__option">Guitar/Bass Pedals</option>
                         <option value="amp" class="single-gear__option">Amplifiers & Monitors</option>
                         <option value="drums" class="single-gear__option">Drums & Percussion</option>
                         <option value="keyboard" class="single-gear__option">Keyboards/Synths</option>
                         <option value="accessory" class="single-gear__option">Accessories</option>
-                        <input type="text" class="single-gear__img-input img-input-${gear.id}" value="${gear["img_link"]}" />
+                        <input type="text" class="single-gear__img-input img-input-${gear.id}" value="${gear["img_link"]}" data-gear-id="${gear.id}"/>
                     </select>
 
                 </div>
@@ -152,7 +185,19 @@ typeFilterSelect.addEventListener('change', async () => {
                 const deletedGear = document.querySelector(`.single-gear__container[data-gear-id="${ev.target.dataset.gearId}"]`);
 
                 gearWrapper.removeChild(deletedGear);
+
             })
+
+            const gearNameField = document.querySelector(`.single-gear__name[data-gear-id="${gear.id}"]`);
+            const gearSelect = document.querySelector(`.single-gear__select[data-gear-id="${gear.id}"]`);
+            const gearImgLinkField = document.querySelector(`.single-gear__img-input[data-gear-id="${gear.id}"]`);
+
+
+            gearNameField.addEventListener('change', onChangeHandler.bind(gearNameField, gearNameField.dataset.gearId, 'name'));
+
+            gearSelect.addEventListener('change', onChangeHandler.bind(gearSelect, gearSelect.dataset.gearId, 'type'));
+
+            gearImgLinkField.addEventListener('change', onChangeHandler.bind(gearImgLinkField, gearImgLinkField.dataset.gearId, 'img'));
         })
     }
 

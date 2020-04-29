@@ -14,7 +14,7 @@ class AllGear extends React.Component {
                 <div className="single-gear__img-container">
                     <img src={gear["img_link"]} alt={gear.name} className="single-gear__img"/>
                 </div>
-                <a href={`./gear/${gear.id}`} className="single-gear__name">{gear.name}</a>
+                <input contentEditable="true" className="single-gear__name" data-gear-id={gear.id} spellcheck="false" defaultValue={`${gear.name}`}></input>
                 <button className="single-gear__delete-btn btn-secondary" data-gear-id={gear.id}>DELETE</button>
                 <div className={`single-gear__more more-${gear.id} display-none`}>
                     <h4 className="single-gear__select-label">Type:</h4>
@@ -25,7 +25,7 @@ class AllGear extends React.Component {
                         <option value="drums" className="single-gear__option">Drums & Percussion</option>
                         <option value="keyboard" className="single-gear__option">Keyboards/Synths</option>
                         <option value="accessory" className="single-gear__option">Accessories</option>
-                        <input type="text" className={`single-gear__img-input img-input-${gear.id} input-primary`} defaultValue={`${gear["img_link"]}`} />
+                        <input type="text" className={`single-gear__img-input img-input-${gear.id} input-primary`} data-gear-id={gear.id} defaultValue={`${gear["img_link"]}`} />
                     </select>
 
                 </div>

@@ -13,6 +13,12 @@ router.get('/:id', gearController.getGearById);
 
 router.delete('/:id', gearController.deleteGearById);
 
+router.put('/:id/name', gearController.putEditGearNameById);
+
+router.put('/:id/type', gearController.putEditGearTypeById);
+
+router.put('/:id/img', gearController.putEditGearImgLinkById);
+
 router.put('/:id', gearController.putEditGearById);
 
 router.post('/', gearController.postAddGear);

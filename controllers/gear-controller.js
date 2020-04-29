@@ -36,7 +36,7 @@ module.exports.postAddGear = async (req, res) => {
 
 module.exports.putEditGearById = async (req, res) => {
 
-    const editGearResult = Gear.updateById(
+    const editGearResult = await Gear.updateById(
         req.params.id,
         req.body.name,
         req.body.type,
@@ -62,4 +62,27 @@ module.exports.getGearByType = async (req, res) => {
     const getGearTypeResult = await Gear.getByType(req.session.userId, req.params.type);
 
     res.json(getGearTypeResult);
+}
+
+module.exports.putEditGearNameById = async (req, res) => {
+
+    const editGearResult = await Gear.updateSingleFieldById(req.params.id, 'name', req.body.field)
+
+    console.log(req.body.field);
+
+    res.json(editGearResult);
+}
+
+module.exports.putEditGearTypeById = async (req, res) => {
+
+    const editGearResult = await Gear.updateSingleFieldById(req.params.id, 'type', req.body.field)
+
+    res.json(editGearResult);
+}
+
+module.exports.putEditGearImgLinkById = async (req, res) => {
+
+    const editGearResult = await Gear.updateSingleFieldById(req.params.id, 'img_link', req.body.field)
+
+    res.json(editGearResult);
 }
