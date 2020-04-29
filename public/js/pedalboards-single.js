@@ -11,6 +11,12 @@ deletePedalBtns.forEach(btn => {
         const deletedPedal = document.querySelector(`.pedal-wrapper-${btn.dataset.gearId}`)
 
         pedalsList.removeChild(deletedPedal);
+
+        console.log(response);
+
+        addedPedalOptionHTML = `<option value=${response.deletedPedal.id} data-pedal-name=${response.deletedPedal.name} class="pedal-option">${response.deletedPedal.name}</option>`
+
+        pedalsSelect.insertAdjacentHTML('beforeend', addedPedalOptionHTML);
     })
 })
 
@@ -22,6 +28,10 @@ addPedalBtn.addEventListener('click', async () => {
     }, { 'Content-Type': 'application/json' });
 
     console.log(response);
+
+    const deletedOption = document.querySelector(`option[value="${response.newPedal.id}"]`);
+
+    pedalsSelect.removeChild(deletedOption);
 
     const newPedalEl = document.createElement('div');
     newPedalEl.classList.add('single-pedalboard__pedal-wrapper');
@@ -49,5 +59,12 @@ addPedalBtn.addEventListener('click', async () => {
 
         pedalsList.removeChild(deletedPedal);
 
+        console.log(response);
+
+        addedPedalOptionHTML = `<option value=${response.deletedPedal.id} data-pedal-name=${response.deletedPedal.name} class="pedal-option">${response.deletedPedal.name}</option>`
+
+        pedalsSelect.insertAdjacentHTML('beforeend', addedPedalOptionHTML);
+
     })
+
 })

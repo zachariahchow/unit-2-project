@@ -79,6 +79,11 @@ module.exports.deletePedalFromPedalboard = async (req, res) => {
 
     const deletePedalFromPedalboardResult = await Gear.removeFromPedalboard(req.params.id, req.params.gearId);
 
-    res.json(deletePedalFromPedalboardResult);
+    const deletedGearPedal = await Gear.getById(req.params.gearId)
+
+    res.json({
+        pedalboard: deletePedalFromPedalboardResult[0],
+        deletedPedal: deletedGearPedal[0]
+    });
 }
 //
