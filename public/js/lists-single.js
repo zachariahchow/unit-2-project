@@ -10,13 +10,13 @@ const pedalboardsList = document.querySelector('.single-list__all-pedalboards-wr
 const deleteGearBtns = document.querySelectorAll('.single-gear__list-item-delete-btn');
 const deletePedalboardBtn = document.querySelector('.single-pedalboard__list-item-delete-btn');
 
-// window.addEventListener('load',
-//     (ev) => {
-//         if (pedalboardsList.hasChildNodes()) {
-//             addPedalboardBtn.classList.add('display-none');
-//             pedalboardsSelect.classList.add('display-none');
-//         }
-//     })
+window.addEventListener('load',
+    (ev) => {
+        if (document.querySelector('.single-pedalboard__wrapper')) {
+            addPedalboardBtn.classList.add('display-none');
+            pedalboardsSelect.classList.add('display-none');
+        }
+    })
 
 deleteGearBtns.forEach(btn => {
     btn.addEventListener('click', async (ev) => {

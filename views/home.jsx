@@ -24,19 +24,12 @@ class Home extends React.Component {
                 <body>
 
                     <Header />
-                    <main>
                     <Nav link="/gear" linklabel="Gear" link2="/pedalboards" link2label="Pedalboards" link3="/lists" link3label="Lists"/>
-
-                    <div className="banner">
-                        <div className="banner__img-container">
-                            <div className="overlay"></div>
-                            <p></p>
-                        </div>
-                    </div>
-                    <div className="login-register__wrapper home">
+                    <main>
+                    <div className="form__wrapper home">
                             {displayLoggedInUser()}
                             <form type="hidden" method="POST" action={`/auth/logout`} className="auth-form logout-form">
-                            <button type="submit" className="logout-btn"><p>Logout</p></button>
+                            <button type="submit" className="logout-btn btn-primary"><p>Logout</p></button>
                             </form>
                     </div>
 

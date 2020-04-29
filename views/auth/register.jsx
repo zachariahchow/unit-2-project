@@ -2,6 +2,7 @@ const React = require("react");
 
 import Head from '../page-components/head-component';
 import Header from '../page-components/header-component';
+import Nav from '../page-components/nav-component';
 
 class RegisterForm extends React.Component {
 
@@ -29,18 +30,19 @@ class RegisterForm extends React.Component {
                 <Head />
                 <script defer src="" />
                 <body>
-                    <Header />
-                    <Nav link="/" linklabel="Home"/>
+
+                    <Nav link="/" linklabel="Back"/>
                     <main>
-                        <div className="form__wrapper">
-                            <form method="POST" action={`/auth/register`} className="auth-form">
+                        <div className="login-register-wrapper">
+                            <Header />
+                            <form method="POST" action={`/auth/register`} className="auth-form form-primary">
                                 {displayInvalidMsg()}
                                 <h2 className="auth-form__header"></h2>
-                                <label htmlFor="email">Email</label>
-                                <input type="email" name="email" placeholder="email"></input>
-                                <label htmlFor="password">Password</label>
-                                <input type="password" name="password" placeholder="password"></input>
-                                <button className="auth-form__submit-btn login-btn" type="submit">Register</button>
+                                <label className="label-primary" htmlFor="email">Email</label>
+                                <input className="input-primary" type="email" name="email" placeholder="email"></input>
+                                <label className="label-primary" htmlFor="password">Password</label>
+                                <input className="input-primary" type="password" name="password" placeholder="password"></input>
+                                <button className="auth-form__submit-btn login-btn btn-primary" type="submit">Register</button>
                             </form>
                         </div>
                     </main>

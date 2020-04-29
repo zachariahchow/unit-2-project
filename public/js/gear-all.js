@@ -16,10 +16,10 @@ seeMoreBtnClickHandler = (ev) => {
     const seeMoreSection = document.querySelector(`.more-${gearId}`);
     seeMoreSection.classList.toggle('display-none');
 
-    if (ev.target.innerText == 'See More') {
+    if (ev.target.innerText.toLowerCase() == 'more') {
         ev.target.innerText = 'Close';
     } else {
-        ev.target.innerText = 'See More';
+        ev.target.innerText = 'More';
     }
 }
 
@@ -66,7 +66,7 @@ addItemBtn.addEventListener('click', async () => {
 
         </div>
 
-        <button data-gear-id=${gear.id} data-gear-type=${gear.type} class="single-gear__more-btn more-btn-${gear.id}">See More</button>`;
+        <button data-gear-id=${gear.id} data-gear-type=${gear.type} class="single-gear__more-btn more-btn-${gear.id}">More</button>`;
 
     gearWrapper.append(gearContainer);
 
@@ -109,7 +109,7 @@ typeFilterSelect.addEventListener('change', async () => {
 
                 </div>
 
-                <button data-gear-id=${gear.id} data-gear-type=${gear.type} class="single-gear__more-btn more-btn-${gear.id}">See More</button>`;
+                <button data-gear-id=${gear.id} data-gear-type=${gear.type} class="single-gear__more-btn more-btn-${gear.id}">More</button>`;
 
             gearWrapper.append(gearContainer);
 

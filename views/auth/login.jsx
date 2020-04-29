@@ -29,18 +29,19 @@ class LoginForm extends React.Component {
                 <div className="overlay"></div>
                 <Head />
                 <body>
-                    <Header />
-                    <Nav link="/" linklabel="Home"/>
+
+                    <Nav link="/" linklabel="Back"/>
                     <main>
-                        <div className="form__wrapper">
-                            <form method="POST" action={`/auth/login`} className="auth-form">
+                        <div className="login-register-wrapper">
+                            <Header />
+                            <form method="POST" action={`/auth/login`} className="auth-form form-primary">
                                 {displayInvalidMsg()}
                                 <h2 className="auth-form__header"></h2>
-                                <label htmlFor="email">Email</label>
-                                <input type="email" name="email" placeholder="email"></input>
-                                <label htmlFor="password">Password</label>
-                                <input type="password" name="password" placeholder="password"></input>
-                                <button className="auth-form__submit-btn login-btn" type="submit">Login</button>
+                                <label className="label-primary" htmlFor="email">Email</label>
+                                <input className="input-primary" type="email" name="email"></input>
+                                <label className="label-primary" htmlFor="password">Password</label>
+                                <input className="input-primary" type="password" name="password" ></input>
+                                <button className="auth-form__submit-btn login-btn btn-primary" type="submit">Login</button>
                             </form>
                         </div>
                     </main>

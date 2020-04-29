@@ -58,7 +58,7 @@ class SingleList extends React.Component {
                                 <button type="button" data-list-id={this.props.singleList.id} className="single-list__pedalboards-add-btn">
                                 Add Pedalboard</button>
                                 <div className="single-list__all-pedalboards-wrapper">
-                                    <h3 className="single-list__all-pedalboards-wrapper-header">Pedalboards</h3>
+                                    <h3 className="single-list__all-pedalboards-wrapper-header">Pedalboard</h3>
                                     {pedalboardsListItems}
                                 </div>
                                 <div className="single-list__all-gear-wrapper">
@@ -71,8 +71,8 @@ class SingleList extends React.Component {
                                 <a href="./delete" className="list__delete-link"><p>Delete List</p></a>
                             </div>
                         </div>
-                        <Nav link="/lists" linklabel="Back" link2="/gear" link2label="Gear" link3="/" link3label="Home"/>
                     </main>
+                    <Nav link="/lists" linklabel="Back" link2="/gear" link2label="Gear" link3="/" link3label="Home"/>
                 </body>
             </html>
         );
