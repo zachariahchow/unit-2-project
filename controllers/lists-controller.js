@@ -5,7 +5,7 @@ module.exports.getAllLists = async (req, res) => {
 
     const getAllListsResult = await List.getAll(req.session.userId);
 
-    res.send(getAllListsResult);
+    res.render('./lists/lists-all', { allLists: getAllListsResult });
 }
 
 module.exports.getListById = async (req, res) => {
