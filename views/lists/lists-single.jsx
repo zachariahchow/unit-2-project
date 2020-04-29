@@ -10,7 +10,7 @@ class SingleList extends React.Component {
 
         const gearListItems = this.props.listGear
             .map(gear =>
-                <div className={`single-gear__wrapper pedal-wrapper-${gear['gear_id']}`} data-gear-id={gear["gear_id"]}>
+                <div className={`single-gear__wrapper gear-wrapper-${gear['gear_id']}`} data-gear-id={gear["gear_id"]}>
                     <li className="gear-list-item">
                         {gear.name}
                     </li>
@@ -23,7 +23,7 @@ class SingleList extends React.Component {
 
         const pedalboardsListItems = this.props.listPedalboards
             .map(pedalboard =>
-                <div className={`single-pedalboard__wrapper pedal-wrapper-${pedalboard['pedalboard_id']}`}>
+                <div className={`single-pedalboard__wrapper pedalboard-wrapper-${pedalboard['pedalboard_id']}`}>
                     <li className="pedalboard-list-item">
                         {pedalboard.name}
                     </li>
@@ -41,21 +41,21 @@ class SingleList extends React.Component {
 
                 <body>
                     <Header />
-                    <script defer src='./js/util/send-http-request.js' />
-                    <script defer src='./js/lists-single.js' />
+                    <script defer src='/js/util/send-http-request.js' />
+                    <script defer src='/js/lists-single.js' />
                     <main>
                         <div className="single-list__container single-display">
                             <p className="single-list__name">{this.props.singleList.name}</p>
-                            <div className="single-list__pedals-list">
-                                <select className="single-list__pedals-list-select" data-list-id={this.props.singleList.id}>
+                            <div className="single-list__gear-list">
+                                <select className="single-list__gear-list-select" data-list-id={this.props.singleList.id}>
                                     {gearOptions}
                                 </select>
-                                <button type="button" data-list-id={this.props.singleList.id} className="single-list__pedals-list-add-btn">
+                                <button type="button" data-list-id={this.props.singleList.id} className="single-list__gear-add-btn">
                                 Add Gear</button>
-                                <select className="single-list__pedals-list-select" data-list-id={this.props.singleList.id}>
+                                <select className="single-list__pedalboards-list-select" data-list-id={this.props.singleList.id}>
                                     {pedalboardsOptions}
                                 </select>
-                                <button type="button" data-list-id={this.props.singleList.id} className="single-list__pedals-list-add-btn">
+                                <button type="button" data-list-id={this.props.singleList.id} className="single-list__pedalboards-add-btn">
                                 Add Pedalboard</button>
                                 <div className="single-list__all-pedalboards-wrapper">
                                     <h3 className="single-list__all-pedalboards-wrapper-header">Pedalboards</h3>
