@@ -39,26 +39,29 @@ module.exports.getListById = async (req, res) => {
     // console.log(getAllPedalboardsResult);
     // console.log(getListPedalboardsResult);
     // console.log(getListResult[0]);
-    console.log(getListGearResult);
-    console.log(listPedalboardsPedals);
 
     const allGearWithoutListGear = getAllGearResult
         .reduce((resultsArr, gear) => {
 
-            listPedalboardsPedals
-                .forEach(pedalboard => {
-                    if (!pedalboard.pedals
-                        .find(pedal => pedal['gear_id'] == gear.id)) {
-                        resultsArr.push(gear);
-                    }
-                })
+            if (listPedalboardsPedals.length < 1) {
+
+                resultsArr.push(gear)
+
+            } else {
+
+                listPedalboardsPedals
+                    .forEach(pedalboard => {
+                        if (!pedalboard.pedals
+                            .find(pedal => pedal['gear_id'] == gear.id)) {
+                            resultsArr.push(gear);
+                        }
+                    })
+            }
             return resultsArr;
 
         }, []).filter(gear => {
-
             return (!getListGearResult
                 .find(listGear => listGear['gear_id'] == gear.id));
-
         });
 
     const allPedalboardsWithoutListPedalboards = getAllPedalboardsResult
@@ -70,6 +73,8 @@ module.exports.getListById = async (req, res) => {
 
     // console.log(allGearWithoutListGear);
     // console.log(allPedalboardsWithoutListPedalboards);
+
+    console.log(allGearWithoutListGear);
 
     res.render('./lists/lists-single', {
         allGear: allGearWithoutListGear,
@@ -147,6 +152,6 @@ module.exports.deletePedalboardFromList = async (req, res) => {
 
     res.json({
         listPedalboard: deletePedalboardFromListResult[0],
-        deletedPedalboard: deletedPedalboardl[0]
+        deletedPedalboard: deletedPedalboard[0]
     });
 }
