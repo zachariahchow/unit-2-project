@@ -3,6 +3,7 @@ const React = require("react");
 import Head from './page-components/head-component';
 import Header from './page-components/header-component';
 import Nav from './page-components/nav-component';
+import Burgermenu from './page-components/burger-menu-component';
 
 class Home extends React.Component {
 
@@ -23,8 +24,9 @@ class Home extends React.Component {
                 <Head />
                 <body>
 
-                    <Header />
+                    <Header hasMenu="true" />
                     <Nav link="/gear" linklabel="Gear" link2="/pedalboards" link2label="Pedalboards" link3="/lists" link3label="Lists"/>
+                    <Burgermenu />
                     <main>
                     <div className="form__wrapper home">
                             <div className="login-wrapper">

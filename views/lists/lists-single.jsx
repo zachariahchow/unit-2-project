@@ -3,6 +3,7 @@ const React = require("react");
 import Head from '../page-components/head-component';
 import Header from '../page-components/header-component';
 import Nav from '../page-components/nav-component';
+import Burgermenu from '../page-components/burger-menu-component';
 
 class SingleList extends React.Component {
 
@@ -41,10 +42,11 @@ class SingleList extends React.Component {
                 <Head />
 
                 <body>
-                    <Header />
+                    <Header hasMenu="true"/>
                     <script defer src='/js/util/send-http-request.js' />
                     <script defer src='/js/lists-single.js' />
                     <Nav link="/lists" linklabel="Back to Lists" link2="/gear" link2label="Gear" link3="/pedalboards" link3label="Pedalboards"/>
+                    <Burgermenu />
                     <main>
                         <div className="single-list__container single-display">
                             <p className="single-list__name page-header">{this.props.singleList.name}</p>

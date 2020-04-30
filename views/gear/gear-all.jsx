@@ -3,6 +3,7 @@ const React = require("react");
 import Head from '../page-components/head-component';
 import Header from '../page-components/header-component';
 import Nav from '../page-components/nav-component';
+import Burgermenu from '../page-components/burger-menu-component';
 
 class AllGear extends React.Component {
 
@@ -40,8 +41,9 @@ class AllGear extends React.Component {
                 <script defer src='./js/util/send-http-request.js' />
                 <script defer src='./js/gear-all.js' />
                 <body>
-                    <Header />
+                    <Header hasMenu="true"/>
                     <Nav link="/pedalboards" linklabel="Pedalboards" link2="/lists" link2label="Lists" link3="/" link3label="Home"/>
+                    <Burgermenu />
                     <main>
                         <h2 className="page-header">GEAR</h2>
                         <form method="POST" action={`/gear`} className="add-form">

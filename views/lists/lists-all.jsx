@@ -3,6 +3,7 @@ const React = require("react");
 import Head from '../page-components/head-component';
 import Header from '../page-components/header-component';
 import Nav from '../page-components/nav-component';
+import Burgermenu from '../page-components/burger-menu-component';
 
 class AllLists extends React.Component {
 
@@ -21,8 +22,9 @@ class AllLists extends React.Component {
             <html>
                 <Head />
                 <body>
-                    <Header />
+                    <Header hasMenu="true"/>
                     <Nav link="/pedalboards" linklabel="Pedalboards" link2="/gear" link2label="Gear" link3="/" link3label="Home"/>
+                    <Burgermenu />
                     <main>
                         <div className="form__wrapper">
                             <h2 className="page-header">LISTS</h2>

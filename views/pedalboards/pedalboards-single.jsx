@@ -3,6 +3,7 @@ const React = require("react");
 import Head from '../page-components/head-component';
 import Header from '../page-components/header-component';
 import Nav from '../page-components/nav-component';
+import Burgermenu from '../page-components/burger-menu-component';
 
 class SinglePedalboard extends React.Component {
 
@@ -38,10 +39,11 @@ class SinglePedalboard extends React.Component {
                 <Head />
 
                 <body>
-                    <Header />
+                    <Header hasMenu="true"/>
                     <script defer src='./js/util/send-http-request.js' />
                     <script defer src='./js/pedalboards-single.js' />
                     <Nav link="/pedalboards" linklabel="Back to Pedalboards" link2="/gear" link2label="Gear" link3="/lists" link3label="Lists"/>
+                    <Burgermenu />
                     <main>
                         <div className="single-pedalboard__container single-display">
                             <p className="single-pedalboard__name page-header">{this.props.singlePedalboard.name}</p>

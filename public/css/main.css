@@ -4,7 +4,6 @@
 		box-sizing: border-box;
 		z-index: 1;
 		font-family: 'Nunito', sans-serif;
-		color: black;
 		text-decoration: none;
 		list-style: none;
 }
@@ -399,6 +398,7 @@ h4 {
 .header__heading>a {
 		font-family: 'Abril Fatface', cursive;
 		font-size: 2.6rem;
+		color: black;
 }
 
 .nav {
@@ -520,4 +520,108 @@ h4 {
 		display: none;
 }
 
-/**/
+/*Burger Menu*/
+.header__menu-line {
+		width: 30px;
+		height: 3px;
+		background-color: black;
+		margin: 7px 0;
+		border-radius: 4px;
+}
+
+.header__menu {
+		position: absolute;
+		padding: 4px 16px;
+		top: 30px;
+		left: 15px;
+		cursor: pointer;
+}
+
+.header__menu:hover {
+		opacity: 0.6;
+}
+
+.burger-menu {
+		visibility: hidden;
+		height: 100vh;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		position: fixed;
+		background: black;
+		transform: translate(0, -2000px);
+		/*		clip-path: circle(100px at 0 -50%);
+		-webkit-clip-path: circle(100px at 0 -12%);*/
+		transition: all 0.6s ease-in-out;
+		z-index: 2;
+}
+
+.burger-menu.open {
+		visibility: visible;
+		transform: translate(0);
+		transition: all 0.6s ease-in-out;
+		/*		clip-path: circle(2000px at 0 -12%);
+		-webkit-clip-path: circle(2000px at 0 -12%);*/
+}
+
+.burger-menu__list {
+		display: flex;
+		height: 75%;
+		flex-direction: column;
+		width: 80%;
+		justify-content: space-around;
+		align-items: center
+}
+
+.burger-menu__link {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 20%;
+		padding: 12px 0;
+		background-color: transparent;
+		border: 2px solid white;
+		letter-spacing: 0.2rem;
+}
+
+.burger-menu__link>a {
+		text-align: center;
+		color: white;
+		text-transform: uppercase;
+}
+
+.header__burger-menu {
+		background-color: black;
+		height: 10%;
+}
+
+.header__burger-menu>.header__heading>a {
+		color: white;
+}
+
+.burger-menu__close-btn {
+		position: absolute;
+		padding: 6px 14px;
+		color: white;
+		top: 2vh;
+		right: 2vh;
+		font-size: 1.2rem;
+		z-index: 2;
+		cursor: pointer;
+}
+
+.burger-menu__close-btn:hover {
+		opacity: 0.6;
+		border-radius: 30px;
+		background-color: white;
+		color: black;
+		transition: 0.1s linear;
+}
+
+.burger-menu__close-btn:active {
+		font-weight: bold;
+		opacity: 1;
+}

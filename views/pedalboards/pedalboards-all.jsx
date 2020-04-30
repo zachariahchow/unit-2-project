@@ -3,6 +3,7 @@ const React = require("react");
 import Head from '../page-components/head-component';
 import Header from '../page-components/header-component';
 import Nav from '../page-components/nav-component';
+import Burgermenu from '../page-components/burger-menu-component';
 
 class AllPedalboards extends React.Component {
 
@@ -21,8 +22,9 @@ class AllPedalboards extends React.Component {
             <html>
                 <Head />
                 <body>
-                    <Header />
+                    <Header hasMenu="true"/>
                     <Nav link="/gear" linklabel="Gear" link2="/lists" link2label="Lists" link3="/" link3label="Home"/>
+                    <Burgermenu />
                     <main>
                         <div className="form__wrapper">
                             <h2 className="page-header">PEDALBOARDS</h2>

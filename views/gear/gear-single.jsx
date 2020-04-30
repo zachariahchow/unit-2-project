@@ -3,6 +3,7 @@ const React = require("react");
 import Head from '../page-components/head-component';
 import Header from '../page-components/header-component';
 import Nav from '../page-components/nav-component';
+import Burgermenu from '../page-components/burger-menu-component';
 
 class SingleGear extends React.Component {
 
@@ -13,7 +14,7 @@ class SingleGear extends React.Component {
                 <Head />
 
                 <body>
-                    <Header />
+                    <Header hasMenu="true"/>
                     <main>
                         <div className="single-gear__container single-display">
                             <div className="single-gear__img-container single-display">
