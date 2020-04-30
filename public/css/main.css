@@ -87,7 +87,6 @@ h4 {
 }
 
 .page-header {
-		width: 50%;
 		font-size: 1.8rem;
 		padding: 8px 20px;
 		margin: 12px 0 20px 0;
@@ -152,6 +151,35 @@ h4 {
 		outline: none;
 		margin: 24px 0;
 		background-color: transparent;
+}
+
+.wrapper-primary {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		justify-content: space-around;
+		align-items: center;
+}
+
+.link-secondary {
+		width: auto;
+		margin: 12px 0;
+		font-size: 1.2rem;
+		text-align: center;
+}
+
+.link-secondary:hover {
+		color: darkred;
+		letter-spacing: 0.05rem;
+}
+
+.link-secondary:active {
+		color: tomato;
+}
+
+.list-header {
+		margin: 12px 0;
+		text-align: center;
 }
 
 .label-primary {
