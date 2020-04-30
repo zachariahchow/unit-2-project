@@ -1,6 +1,7 @@
 const db = require('../db.js');
 const Pedalboard = require('../models/pedalboards-model');
 const Gear = require('../models/gear-model');
+const errorController = require('../controllers/404-controller');
 
 module.exports.getAllPedalboards = async (req, res) => {
 
@@ -13,28 +14,40 @@ module.exports.getAllPedalboards = async (req, res) => {
 
 module.exports.getPedalboardById = async (req, res) => {
 
-    const allPedalsResult = await Gear.getByType(req.session.userId, 'pedal');
+    try {
 
-    const getPedalboardResult = await Pedalboard.getById(req.params.id);
+        const getPedalboardResult = await Pedalboard.getById(req.params.id);
 
-    const getPedalboardPedalsResult = await Pedalboard.getAllPedals(req.session.userId, req.params.id);
+        if (!getPedalboardResult[0]) {
+            errorController.get404Page(req, res);
+            console.log('Cannot find Pedalboard');
+        }
 
-    const idsOfAddedPedals = getPedalboardPedalsResult
-        .reduce((acc, pedal) => {
-            acc.push(pedal['gear_id']);
-            return acc;
-        }, [])
+        const allPedalsResult = await Gear.getByType(req.session.userId, 'pedal');
 
-    const allUnaddedPedals = allPedalsResult
-        .filter(pedal => !idsOfAddedPedals.find(id => id == pedal.id));
+        const getPedalboardPedalsResult = await Pedalboard.getAllPedals(req.session.userId, req.params.id);
 
-    console.log(getPedalboardPedalsResult);
+        const idsOfAddedPedals = getPedalboardPedalsResult
+            .reduce((acc, pedal) => {
+                acc.push(pedal['gear_id']);
+                return acc;
+            }, [])
 
-    res.render('./pedalboards/pedalboards-single', {
-        allUnaddedPedals: allUnaddedPedals,
-        singlePedalboard: getPedalboardResult[0],
-        singlePedalboardPedals: getPedalboardPedalsResult
-    });
+        const allUnaddedPedals = allPedalsResult
+            .filter(pedal => !idsOfAddedPedals.find(id => id == pedal.id));
+
+        console.log(getPedalboardPedalsResult);
+
+        res.render('./pedalboards/pedalboards-single', {
+            allUnaddedPedals: allUnaddedPedals,
+            singlePedalboard: getPedalboardResult[0],
+            singlePedalboardPedals: getPedalboardPedalsResult
+        });
+
+    } catch (err) {
+        console.log(err);
+        errorController.get404Page(req, res);
+    }
 }
 
 //Consider turning these into AJAX calls to internalAPI endpoints, manipulate DOM rather than render new page

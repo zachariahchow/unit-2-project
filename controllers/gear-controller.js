@@ -1,5 +1,6 @@
 const db = require('../db');
 const Gear = require('../models/gear-model');
+const errorController = require('../controllers/404-controller');
 
 module.exports.getAllGear = async (req, res) => {
 
@@ -12,11 +13,26 @@ module.exports.getAllGear = async (req, res) => {
 
 module.exports.getGearById = async (req, res) => {
 
-    const getGearResult = await Gear.getById(req.params.id);
+    try {
 
-    console.log(getGearResult);
+        const getGearResult = await Gear.getById(req.params.id);
 
-    res.render('./gear/gear-single', { singleGear: getGearResult[0] });
+        console.log(getGearResult);
+
+        if (!getGearResult[0]) {
+
+            errorController.get404Page(req, res);
+            console.log('Cannot find Gear item');
+
+        } else {
+            res.render('./gear/gear-single', { singleGear: getGearResult[0] });
+        }
+
+    } catch (err) {
+        console.log(err);
+        errorController.get404Page(req, res);
+    }
+
 }
 
 //Consider turning these into AJAX calls to internalAPI endpoints, manipulate DOM rather than render new page

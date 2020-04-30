@@ -47,6 +47,7 @@ app.use(session({
 const db = require('./db');
 const authRoutes = require('./routes/auth-routes');
 const authController = require('./controllers/auth-controller');
+const errorController = require('./controllers/404-controller');
 const gearRoutes = require('./routes/gear-routes');
 const listsRoutes = require('./routes/lists-routes');
 const pedalboardsRoutes = require('./routes/pedalboards-routes');
@@ -86,6 +87,8 @@ app.use('/gear', gearRoutes);
 app.use('/lists', listsRoutes);
 
 app.use('/pedalboards', pedalboardsRoutes);
+
+app.use(errorController.get404Page);
 
 
 /**

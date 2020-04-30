@@ -4,6 +4,7 @@ const router = new Router();
 const path = require('path');
 const session = require('express-session');
 const pedalboardsController = require('../controllers/pedalboards-controller.js');
+const errorController = require('../controllers/404-controller');
 
 router.use('/:route', express.static(path.join(__dirname, '..', '/public/')));
 
@@ -23,5 +24,7 @@ router.put('/:id', pedalboardsController.putEditPedalboardById);
 router.post('/', pedalboardsController.postAddPedalboard);
 
 router.get('/', pedalboardsController.getAllPedalboards);
+
+router.use(errorController.get404Page);
 
 module.exports = router;
