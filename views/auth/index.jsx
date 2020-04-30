@@ -17,8 +17,8 @@ class AuthIndex extends React.Component {
                     <div className="login-register-wrapper">
                         <div className="form-primary">
                             <Header />
-                            <a href="/auth/login" className="login-link"><p>Login</p></a>
-                            <a href="/auth/register" className="register-link"><p>Register</p></a>
+                            <a href="/auth/login" className="login-link link-primary"><p>Login</p></a>
+                            <a href="/auth/register" className="register-link link-primary"><p>Register</p></a>
                         </div>
                     </div>
                     </main>

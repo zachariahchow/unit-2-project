@@ -33,6 +33,6 @@ INSERT INTO lists (name, user_id) VALUES('Substation', 1) RETURNING *;
 
 INSERT INTO lists_pedalboards (list_id, pedalboard_id) VALUES(1, 1) RETURNING *;
 
-INSERT INTO lists_pedalboards (list_id, gear_id) VALUES(1, 1) RETURNING *;
+INSERT INTO lists_gear (list_id, gear_id) VALUES(1, 1) RETURNING *;
 
 --
