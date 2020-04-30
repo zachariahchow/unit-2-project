@@ -14,7 +14,7 @@ class AllGear extends React.Component {
                 <div className="single-gear__img-container">
                     <img src={gear["img_link"]} alt={gear.name} className="single-gear__img"/>
                 </div>
-                <input className="single-gear__name input-primary" data-gear-id={gear.id} spellcheck="false" defaultValue={`${gear.name}`}></input>
+                <input className="single-gear__name input-primary" data-gear-id={gear.id} spellCheck="false" defaultValue={`${gear.name}`}></input>
                 <button className="single-gear__delete-btn btn-secondary" data-gear-id={gear.id}>DELETE</button>
                 <div className={`single-gear__more more-${gear.id} display-none wrapper-secondary`}>
                     <h4 className="single-gear__select-label">Type:</h4>
@@ -46,8 +46,8 @@ class AllGear extends React.Component {
                         <h2 className="page-header">GEAR</h2>
                         <form method="POST" action={`/gear`} className="add-form">
                             <h2 className="add-form__header">Add Item</h2>
-                            <input className="add-form__name-input input-primary" type="text" name="name" placeholder="Name" maxlength="100"/>
-                            <input className="add-form__img-input input-primary" type="text" name="img" placeholder="Image Link" maxlength="300"/>
+                            <input className="add-form__name-input input-primary" type="text" name="name" placeholder="Name" maxLength="100"/>
+                            <input className="add-form__img-input input-primary" type="text" name="img" placeholder="Image Link" maxLength="300"/>
                             <select className="add-form__select" name="type">
                                 <option value="guitar" className="add-form__option">Guitar/Bass</option>
                                 <option value="pedal" className="add-form__option">Guitar/Bass Pedals</option>
