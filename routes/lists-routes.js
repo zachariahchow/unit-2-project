@@ -15,9 +15,9 @@ router.delete('/:id/gear/:gearId', listsController.deleteGearFromList);
 
 router.delete('/:id/pedalboards/:pedalboardId', listsController.deletePedalboardFromList);
 
-router.get('/:id', listsController.getListById);
+router.get('/:id/delete', listsController.deleteListById);
 
-router.delete('/:id', listsController.deleteListById);
+router.get('/:id', listsController.getListById);
 
 router.put('/:id', listsController.putEditListById);
 

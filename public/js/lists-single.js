@@ -114,9 +114,9 @@ addPedalboardBtn.addEventListener('click', async (ev) => {
 
     const addedPedalboardHTML = `
         <div class="single-pedalboard__wrapper pedalboard-wrapper-${response.newPedalboard.id} wrapper-primary">
-            <li class="pedalboard-list-item">
+            <a href="/pedalboards/${response.newPedalboard.id}" class="pedalboard-list-item link-secondary">
                 ${response.newPedalboard.name}
-            </li>
+            </a>
             <button type="button" data-pedalboard-id=${response.newPedalboard.id} class="single-pedalboard__list-item-delete-btn btn-secondary">Delete</button>
         </div>`
 

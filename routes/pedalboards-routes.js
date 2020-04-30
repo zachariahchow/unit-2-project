@@ -13,7 +13,10 @@ router.delete('/:id/:gearId', pedalboardsController.deletePedalFromPedalboard);
 
 router.get('/:id', pedalboardsController.getPedalboardById);
 
-router.delete('/:id', pedalboardsController.deletePedalboardById);
+//Change this REST anti-pattern
+router.get('/:id/delete', pedalboardsController.deletePedalboardById);
+// router.delete('/:id', pedalboardsController.deletePedalboardById);
+//
 
 router.put('/:id', pedalboardsController.putEditPedalboardById);
 
