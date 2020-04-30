@@ -10,24 +10,25 @@ class SingleList extends React.Component {
 
         const gearListItems = this.props.listGear
             .map(gear =>
-                <div className={`single-gear__wrapper gear-wrapper-${gear['gear_id']}`} data-gear-id={gear["gear_id"]}>
+                <div className={`single-gear__wrapper gear-wrapper-${gear['gear_id']} wrapper-primary`} data-gear-id={gear["gear_id"]}>
                     <li className="gear-list-item">
                         {gear.name}
                     </li>
                     <div className="single-gear__img-container">
                         <img src={gear["img_link"]} alt={gear.name} className="single-pedal__img"/>
                     </div>
-                    <button type="button" data-list-id={gear['list_id']} data-gear-id={gear['gear_id']} className="single-gear__list-item-delete-btn">Delete</button>
+                    <button type="button" data-list-id={gear['list_id']} data-gear-id={gear['gear_id']} className="single-gear__list-item-delete-btn btn-secondary">Delete</button>
                 </div>
             )
 
         const pedalboardsListItems = this.props.listPedalboards
             .map(pedalboard =>
-                <div className={`single-pedalboard__wrapper pedalboard-wrapper-${pedalboard.id}`}>
-                    <li className="pedalboard-list-item">
+                <div className={`single-pedalboard__wrapper pedalboard-wrapper-${pedalboard.id} wrapper-primary`}>
+                    <a href={`/pedalboards/${pedalboard.id}`} className="pedalboard-list-item link-secondary">
                         {pedalboard.name}
-                    </li>
-                    <button type="button" data-pedalboard-id={pedalboard.id} className="single-pedalboard__list-item-delete-btn">Delete</button>
+                    </a>
+
+                    <button type="button" data-pedalboard-id={pedalboard.id} className="single-pedalboard__list-item-delete-btn btn-secondary">Delete</button>
                 </div>
             )
 
@@ -46,30 +47,31 @@ class SingleList extends React.Component {
                     <Nav link="/lists" linklabel="Back to Lists" link2="/gear" link2label="Gear" link3="/pedalboards" link3label="Pedalboards"/>
                     <main>
                         <div className="single-list__container single-display">
-                            <p className="single-list__name">{this.props.singleList.name}</p>
+                            <p className="single-list__name page-header">{this.props.singleList.name}</p>
                             <div className="single-list__gear-list">
-                                <select className="single-list__gear-list-select" data-list-id={this.props.singleList.id}>
-                                    {gearOptions}
-                                </select>
-                                <button type="button" data-list-id={this.props.singleList.id} className="single-list__gear-add-btn">
-                                Add Gear</button>
-                                <select className="single-list__pedalboards-list-select" data-list-id={this.props.singleList.id}>
-                                    {pedalboardsOptions}
-                                </select>
-                                <button type="button" data-list-id={this.props.singleList.id} className="single-list__pedalboards-add-btn">
-                                Add Pedalboard</button>
-                                <div className="single-list__all-pedalboards-wrapper">
-                                    <h3 className="single-list__all-pedalboards-wrapper-header">Pedalboard</h3>
+                                <div className="add-form">
+                                    <select className="single-list__gear-list-select" data-list-id={this.props.singleList.id}>
+                                        {gearOptions}
+                                    </select>
+                                    <button type="button" data-list-id={this.props.singleList.id} className="single-list__gear-add-btn btn-secondary">
+                                    Add Gear</button>
+                                    <select className="single-list__pedalboards-list-select" data-list-id={this.props.singleList.id}>
+                                        {pedalboardsOptions}
+                                    </select>
+                                    <button type="button" data-list-id={this.props.singleList.id} className="single-list__pedalboards-add-btn btn-secondary">
+                                    Add Pedalboard</button>
+                                </div>
+                                <div className="single-list__all-pedalboards-wrapper add-form">
+                                    <h3 className="single-list__all-pedalboards-wrapper-header list-header">Pedalboard</h3>
                                     {pedalboardsListItems}
                                 </div>
-                                <div className="single-list__all-gear-wrapper">
-                                    <h3 className="single-list__all-gear-wrapper-header">Gear</h3>
+                                <div className="single-list__all-gear-wrapper wrapper-primary">
+                                    <h3 className="single-list__all-gear-wrapper-header list-header">Gear</h3>
                                     {gearListItems}
                                 </div>
                             </div>
-                            <div className ="list__edit-delete-links">
-                                <a href="./edit" className="list__edit-link"><p>Edit</p></a>
-                                <a href="./delete" className="list__delete-link"><p>Delete List</p></a>
+                            <div className ="list__edit-delete-links wrapper-primary">
+                                <a href="./delete" className="list__delete-link link-primary"><p>Delete List</p></a>
                             </div>
                         </div>
                     </main>

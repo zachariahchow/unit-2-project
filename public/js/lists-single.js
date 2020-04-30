@@ -49,14 +49,14 @@ addGearBtn.addEventListener('click', async () => {
     newGearEl.classList.add(`gear-wrapper-${response.newGear.id}`);
     newGearEl.setAttribute('data-gear-id', `${response.newGear.id}`);
     newGearEl.innerHTML = `
-    <div class=single-gear__wrapper gear-wrapper-${response.newGear.id} data-gear-id=${response.newGear.id}>
+    <div class="single-gear__wrapper gear-wrapper-${response.newGear.id} wrapper-primary" data-gear-id=${response.newGear.id}>
         <li class="gear-list-item">
             ${response.newGear.name}
         </li>
         <div class="single-gear__img-container">
             <img src=${response.newGear["img_link"]} alt=${response.newGear.name} class="single-pedal__img"/>
         </div>
-        <button type="button" data-list-id=${response.listGear['list_id']} data-gear-id=${response.newGear.id} class="single-gear__list-item-delete-btn">Delete</button>
+        <button type="button" data-list-id=${response.listGear['list_id']} data-gear-id=${response.newGear.id} class="single-gear__list-item-delete-btn btn-secondary">Delete</button>
     </div>`
 
 
@@ -113,11 +113,11 @@ addPedalboardBtn.addEventListener('click', async (ev) => {
     pedalboardsSelect.removeChild(deletedOption);
 
     const addedPedalboardHTML = `
-        <div class="single-pedalboard__wrapper pedalboard-wrapper-${response.newPedalboard.id}">
+        <div class="single-pedalboard__wrapper pedalboard-wrapper-${response.newPedalboard.id} wrapper-primary">
             <li class="pedalboard-list-item">
                 ${response.newPedalboard.name}
             </li>
-            <button type="button" data-pedalboard-id=${response.newPedalboard.id} class="single-pedalboard__list-item-delete-btn">Delete</button>
+            <button type="button" data-pedalboard-id=${response.newPedalboard.id} class="single-pedalboard__list-item-delete-btn btn-secondary">Delete</button>
         </div>`
 
     pedalboardsList.insertAdjacentHTML('beforeend', addedPedalboardHTML);

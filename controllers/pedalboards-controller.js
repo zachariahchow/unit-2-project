@@ -60,7 +60,7 @@ module.exports.deletePedalboardById = async (req, res) => {
 
     const deletePedalboardResult = await Pedalboard.deleteById(req.params.id);
 
-    res.send(deletePedalboardResult);
+    res.redirect('/pedalboards');
 }
 
 //

@@ -104,9 +104,9 @@ module.exports.putEditListById = async (req, res) => {
 
 module.exports.deleteListById = async (req, res) => {
 
-    const deleteListResult = await List.deleteById(listId);
+    const deleteListResult = await List.deleteById(req.params.id);
 
-    res.send(deleteListResult);
+    res.redirect(`/lists`);
 }
 
 module.exports.postAddGearToList = async (req, res) => {

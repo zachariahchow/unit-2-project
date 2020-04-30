@@ -44,7 +44,7 @@ addPedalBtn.addEventListener('click', async () => {
         <div class="single-pedal__img-container">
             <img src=${response.newPedal["img_link"]} alt={pedal.name} class="single-pedal__img"/>
         </div>
-        <button type="button" data-pedalboard-id=${response.pedalboard['pedalboard_id']} data-pedal-id=${response.pedalboard.id} data-gear-id=${response.newPedal.id} class="single-pedalboard__pedals-list-item-delete-btn">Delete</button>
+        <button type="button" data-pedalboard-id=${response.pedalboard['pedalboard_id']} data-pedal-id=${response.pedalboard.id} data-gear-id=${response.newPedal.id} class="single-pedalboard__pedals-list-item-delete-btn btn-secondary">Delete</button>
     `
 
     pedalsList.append(newPedalEl);
