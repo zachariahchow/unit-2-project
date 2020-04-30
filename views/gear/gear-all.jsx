@@ -16,7 +16,7 @@ class AllGear extends React.Component {
                 </div>
                 <input className="single-gear__name input-primary" data-gear-id={gear.id} spellcheck="false" defaultValue={`${gear.name}`}></input>
                 <button className="single-gear__delete-btn btn-secondary" data-gear-id={gear.id}>DELETE</button>
-                <div className={`single-gear__more more-${gear.id} display-none`}>
+                <div className={`single-gear__more more-${gear.id} display-none wrapper-secondary`}>
                     <h4 className="single-gear__select-label">Type:</h4>
                     <select data-gear-id={gear.id} className={`single-gear__select select-${gear.id}`} name="type">
                         <option value="guitar" className="single-gear__option">Guitar/Bass</option>

@@ -43,6 +43,7 @@ class SingleList extends React.Component {
                     <Header />
                     <script defer src='/js/util/send-http-request.js' />
                     <script defer src='/js/lists-single.js' />
+                    <Nav link="/lists" linklabel="Back to Lists" link2="/gear" link2label="Gear" link3="/pedalboards" link3label="Pedalboards"/>
                     <main>
                         <div className="single-list__container single-display">
                             <p className="single-list__name">{this.props.singleList.name}</p>
@@ -72,7 +73,6 @@ class SingleList extends React.Component {
                             </div>
                         </div>
                     </main>
-                    <Nav link="/lists" linklabel="Back" link2="/gear" link2label="Gear" link3="/" link3label="Home"/>
                 </body>
             </html>
         );

@@ -91,7 +91,7 @@ addItemBtn.addEventListener('click', async () => {
         <input class="single-gear__name input-primary" data-gear-id="${gear.id}" spellcheck="false" value="${gear.name}"></input>
         <button class="single-gear__delete-btn btn-secondary" data-gear-id=${gear.id}>DELETE</button>
 
-        <div class="single-gear__more more-${gear.id} display-none">
+        <div class="single-gear__more more-${gear.id} display-none wrapper-secondary">
             <h4 class="single-gear__select-label">Type:</h4>
             <select data-gear-id=${gear.id} class="single-gear__select select-${gear.id}" name="type">
                 <option value="guitar" class="single-gear__option">Guitar/Bass</option>
@@ -157,7 +157,7 @@ typeFilterSelect.addEventListener('change', async () => {
                 <input class="single-gear__name input-primary" data-gear-id="${gear.id}" spellcheck="false" value="${gear.name}"></input>
                 <button class="single-gear__delete-btn btn-secondary" data-gear-id="${gear.id}">DELETE</button>
 
-                <div class="single-gear__more more-${gear.id} display-none">
+                <div class="single-gear__more more-${gear.id} display-none wrapper-secondary">
                     <h4 class="single-gear__select-label">Type:</h4>
                     <select data-gear-id=${gear.id} class="single-gear__select select-${gear.id}" name="type">
                         <option value="guitar" class="single-gear__option">Guitar/Bass</option>

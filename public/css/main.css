@@ -161,6 +161,14 @@ h4 {
 		align-items: center;
 }
 
+.wrapper-secondary {
+		display: flex;
+		flex-direction: column;
+		width: 80%;
+		justify-content: space-around;
+		align-items: center;
+}
+
 .link-secondary {
 		width: auto;
 		margin: 12px 0;

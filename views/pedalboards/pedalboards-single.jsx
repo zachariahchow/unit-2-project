@@ -41,6 +41,7 @@ class SinglePedalboard extends React.Component {
                     <Header />
                     <script defer src='./js/util/send-http-request.js' />
                     <script defer src='./js/pedalboards-single.js' />
+                    <Nav link="/pedalboards" linklabel="Back to Pedalboards" link2="/gear" link2label="Gear" link3="/lists" link3label="Lists"/>
                     <main>
                         <div className="single-pedalboard__container single-display">
                             <p className="single-pedalboard__name">{this.props.singlePedalboard.name}</p>
