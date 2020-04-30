@@ -29,7 +29,7 @@ class AllPedalboards extends React.Component {
                             <form method="POST" action={`/pedalboards`} className="add-form">
                                 <h2 className="add-form__header">Add Pedalboard</h2>
                                 <input className="add-form__name-input input-primary" type="text" name="name" placeholder="Name" maxlength="100"/>
-                                <button className="add-form__submit-btn btn-secondary" type="button">Add</button>
+                                <button className="add-form__submit-btn btn-secondary" type="submit">Add</button>
                             </form>
                         </div>
                         <div className="form__wrapper">

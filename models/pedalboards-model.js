@@ -2,7 +2,7 @@ const db = require('../db.js');
 
 module.exports = class Pedalboard {
 
-    constructor(name, userId) {
+    constructor(userId, name) {
         this.userId = userId;
         this.name = name;
     }

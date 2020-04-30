@@ -42,9 +42,11 @@ module.exports.postAddPedalboard = async (req, res) => {
 
     newPedalboard = new Pedalboard(req.session.userId, req.body.name);
 
-    const addPedalboardResult = await newPedalboard.add()
+    console.log(newPedalboard);
 
-    res.json(addPedalboardResult);
+    const addPedalboardResult = await newPedalboard.add();
+
+    res.redirect(`/pedalboards/${addPedalboardResult[0].id}`);
 }
 
 module.exports.putEditPedalboardById = async (req, res) => {
