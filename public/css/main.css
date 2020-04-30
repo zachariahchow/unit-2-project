@@ -41,6 +41,10 @@ img {
 		max-width: 500px;
 		height: auto;
 		object-fit: cover;
+		-webkit-object-fit: cover;
+		-moz-object-fit: cover;
+		-o-object-fit: cover;
+		-ms-object-fit: cover;
 }
 
 select {
