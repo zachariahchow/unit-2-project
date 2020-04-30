@@ -38,12 +38,13 @@ main {
 img {
 		width: 90%;
 		max-width: 500px;
+		max-height: 300px;
 		height: auto;
-		object-fit: cover;
-		-webkit-object-fit: cover;
-		-moz-object-fit: cover;
-		-o-object-fit: cover;
-		-ms-object-fit: cover;
+		object-fit: contain;
+		-webkit-object-fit: contain;
+		-moz-object-fit: contain;
+		-o-object-fit: contain;
+		-ms-object-fit: contain;
 }
 
 select {
