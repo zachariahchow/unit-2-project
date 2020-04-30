@@ -26,10 +26,10 @@ class AllLists extends React.Component {
                     <main>
                         <div className="form__wrapper">
                             <h2 className="page-header">LISTS</h2>
-                            <form method="POST" action={`/pedalboards`} className="add-form">
+                            <form method="POST" action={`/lists`} className="add-form">
                                 <h2 className="add-form__header">Add List</h2>
                                 <input className="add-form__name-input input-primary" type="text" name="name" placeholder="Name" maxlength="100"/>
-                                <button className="add-form__submit-btn btn-secondary" type="button">Add</button>
+                                <button className="add-form__submit-btn btn-secondary" type="submit">Add</button>
                             </form>
                         </div>
                         <div className="form__wrapper">

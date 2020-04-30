@@ -92,7 +92,7 @@ module.exports.postAddList = async (req, res) => {
 
     const addListResult = await newList.add();
 
-    res.send(addListResult);
+    res.redirect(`/lists/${addListResult[0].id}`);
 }
 
 module.exports.putEditListById = async (req, res) => {

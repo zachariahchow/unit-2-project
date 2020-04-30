@@ -8,7 +8,7 @@ module.exports = class List {
     }
 
     async add() {
-        const queryT = `INSERT INTO lists (user_id, name) VALUES($1, $2)`;
+        const queryT = `INSERT INTO lists (user_id, name) VALUES($1, $2) RETURNING *`;
         const queryV = [this.userId, this.name];
         const { rows } = await db.query(queryT, queryV);
 
