@@ -25,6 +25,11 @@ app.use(express.urlencoded({
 
 app.use(express.static(path.join(__dirname, './public/')));
 
+//Experimenting with helmet: calls are trivial
+const helmet = require('helmet');
+app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' }));
+//
+
 // Set react-views to be the default view engine
 const reactEngine = require('express-react-views').createEngine();
 
