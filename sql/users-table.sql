@@ -4,5 +4,6 @@ CREATE TABLE IF NOT EXISTS users (
 	id serial PRIMARY KEY,
 	email CITEXT NOT NULL,
 	password VARCHAR (64) NOT NULL,
-	img_link VARCHAR
+	img_link VARCHAR,
+	name VARCHAR (255)
 );
