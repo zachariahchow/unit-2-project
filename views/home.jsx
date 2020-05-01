@@ -26,7 +26,7 @@ class Home extends React.Component {
 
                     <Header hasMenu="true" />
                     <Nav link="/gear" linklabel="Gear" link2="/pedalboards" link2label="Pedalboards" link3="/lists" link3label="Lists"/>
-                    <Burgermenu />
+                    <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email}/>
                     <main>
                     <div className="form__wrapper home">
                             <div className="login-wrapper">
