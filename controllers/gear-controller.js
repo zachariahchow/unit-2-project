@@ -6,9 +6,10 @@ module.exports.getAllGear = async (req, res) => {
 
     const allGearResult = await Gear.getAll(req.session.userId)
 
-    console.log(allGearResult)
-
-    res.render('./gear/gear-all', { allGear: allGearResult });
+    res.render('./gear/gear-all', {
+        allGear: allGearResult,
+        currentUser: req.session.currentUser
+    });
 }
 
 module.exports.getGearById = async (req, res) => {
@@ -25,7 +26,10 @@ module.exports.getGearById = async (req, res) => {
             console.log('Cannot find Gear item');
 
         } else {
-            res.render('./gear/gear-single', { singleGear: getGearResult[0] });
+            res.render('./gear/gear-single', {
+                singleGear: getGearResult[0],
+                currentUser: req.session.currentUser
+            });
         }
 
     } catch (err) {

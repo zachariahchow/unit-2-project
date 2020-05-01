@@ -21,10 +21,11 @@ class AllPedalboards extends React.Component {
         return (
             <html>
                 <Head />
+                <script defer src="./js/util/send-http-request.js"></script>
                 <body>
                     <Header hasMenu="true"/>
                     <Nav link="/gear" linklabel="Gear" link2="/lists" link2label="Lists" link3="/" link3label="Home"/>
-                    <Burgermenu />
+                    <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email}/>
                     <main>
                         <div className="form__wrapper">
                             <h2 className="page-header">PEDALBOARDS</h2>

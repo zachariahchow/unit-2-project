@@ -53,6 +53,8 @@ module.exports.postLogin = async (req, res) => {
 
         } else if (loggedInUser[0]['email'] == email && loggedInUser[0]['password'] == sha256(password)) {
 
+            req.session.user = loggedInUser[0];
+            console.log(loggedInUser);
             req.session.userId = loggedInUser[0].id;
             req.session.invalidMsg = "";
             res.redirect('/');

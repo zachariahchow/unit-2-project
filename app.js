@@ -51,6 +51,7 @@ const errorController = require('./controllers/404-controller');
 const gearRoutes = require('./routes/gear-routes');
 const listsRoutes = require('./routes/lists-routes');
 const pedalboardsRoutes = require('./routes/pedalboards-routes');
+const userProfileRoutes = require('./routes/user-profile-routes');
 
 app.use('/auth', authRoutes);
 
@@ -60,6 +61,7 @@ app.use('/', async (req, res, next) => {
 
     if (req.session.userId) {
 
+        req.session.currentUser = await authController.getUserInfo(req.session.userId);
         next();
 
     } else {
@@ -76,7 +78,7 @@ app.get('/', async (req, res) => {
     if (req.session.userId) {
 
         req.session.currentUser = await authController.getUserInfo(req.session.userId);
-
+        console.log(req.session.currentUser);
         res.render('home', { 'currentUser': req.session.currentUser });
 
     }
@@ -87,6 +89,8 @@ app.use('/gear', gearRoutes);
 app.use('/lists', listsRoutes);
 
 app.use('/pedalboards', pedalboardsRoutes);
+
+app.use('/user-profile', userProfileRoutes);
 
 app.use(errorController.get404Page);
 

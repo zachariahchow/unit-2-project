@@ -8,7 +8,10 @@ module.exports.getAllLists = async (req, res) => {
 
     const getAllListsResult = await List.getAll(req.session.userId);
 
-    res.render('./lists/lists-all', { allLists: getAllListsResult });
+    res.render('./lists/lists-all', {
+        allLists: getAllListsResult,
+        currentUser: req.session.currentUser
+    });
 }
 
 module.exports.getListById = async (req, res) => {
@@ -89,7 +92,8 @@ module.exports.getListById = async (req, res) => {
             allPedalboards: allPedalboardsWithoutListPedalboards,
             singleList: getListResult[0],
             listGear: getListGearResult,
-            listPedalboards: listPedalboardsPedals
+            listPedalboards: listPedalboardsPedals,
+            currentUser: req.session.currentUser
         });
 
     } catch (err) {

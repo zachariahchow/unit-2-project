@@ -42,8 +42,9 @@ class SinglePedalboard extends React.Component {
                     <Header hasMenu="true"/>
                     <script defer src='./js/util/send-http-request.js' />
                     <script defer src='./js/pedalboards-single.js' />
+                    <script defer src="./js/util/send-http-request.js"></script>
                     <Nav link="/pedalboards" linklabel="Back to Pedalboards" link2="/gear" link2label="Gear" link3="/lists" link3label="Lists"/>
-                    <Burgermenu />
+                    <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email}/>
                     <main>
                         <div className="single-pedalboard__container single-display">
                             <p className="single-pedalboard__name page-header">{this.props.singlePedalboard.name}</p>

@@ -22,6 +22,7 @@ class Home extends React.Component {
         return (
             <html>
                 <Head />
+                <script defer src="./js/util/send-http-request.js"></script>
                 <body>
 
                     <Header hasMenu="true" />

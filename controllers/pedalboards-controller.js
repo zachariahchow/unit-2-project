@@ -9,7 +9,10 @@ module.exports.getAllPedalboards = async (req, res) => {
 
     console.log(allPedalboardsResult);
 
-    res.render('./pedalboards/pedalboards-all', { allPedalboards: allPedalboardsResult })
+    res.render('./pedalboards/pedalboards-all', {
+        allPedalboards: allPedalboardsResult,
+        currentUser: req.session.currentUser
+    })
 }
 
 module.exports.getPedalboardById = async (req, res) => {
@@ -41,7 +44,8 @@ module.exports.getPedalboardById = async (req, res) => {
         res.render('./pedalboards/pedalboards-single', {
             allUnaddedPedals: allUnaddedPedals,
             singlePedalboard: getPedalboardResult[0],
-            singlePedalboardPedals: getPedalboardPedalsResult
+            singlePedalboardPedals: getPedalboardPedalsResult,
+            currentUser: req.session.currentUser
         });
 
     } catch (err) {
