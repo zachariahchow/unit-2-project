@@ -13,7 +13,9 @@ module.exports.getUserGearVideos = async (req, res) => {
 
     const randomGearIndex = getRandomInt(0, getGearResult.length);
 
-    const getVideosResult = await userFeed.getVideosFromYoutube(getGearResult[randomGearIndex].name);
+    const queryString = getGearResult[randomGearIndex].name.split(" ").join("+");
+
+    const getVideosResult = await userFeed.getVideosFromYoutube(queryString);
 
     console.log(getVideosResult)
 

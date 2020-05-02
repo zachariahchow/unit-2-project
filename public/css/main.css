@@ -701,3 +701,9 @@ h4 {
 .user-profile__img {
 		/*max-width: 200px;*/
 }
+
+/*iframe*/
+
+iframe {
+		margin: 24px 0;
+}
