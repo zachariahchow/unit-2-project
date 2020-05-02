@@ -58,6 +58,7 @@ const gearRoutes = require('./routes/gear-routes');
 const listsRoutes = require('./routes/lists-routes');
 const pedalboardsRoutes = require('./routes/pedalboards-routes');
 const userProfileRoutes = require('./routes/user-profile-routes');
+const userFeedRoutes = require('./routes/user-feed-routes');
 
 app.use('/auth', authRoutes);
 
@@ -98,6 +99,8 @@ app.use('/pedalboards', pedalboardsRoutes);
 
 app.use('/user-profile', userProfileRoutes);
 
+app.use('/user-feed', userFeedRoutes);
+
 app.use(errorController.get404Page);
 
 
@@ -120,5 +123,3 @@ let onClose = function() {
 
 process.on('SIGTERM', onClose);
 process.on('SIGINT', onClose);
-
-console.log(process.env.API_KEY_YOUTUBE);
