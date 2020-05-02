@@ -2,25 +2,31 @@ mainSection = document.querySelector('main');
 
 const loadVideo = async () => {
 
-    const response = await sendHttpRequest('GET', `/user-feed/videos`);
+    try {
 
-    console.log(response);
+        const response = await sendHttpRequest('GET', `/user-feed/videos`);
 
-    const getRandomInt = (min, max) => {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min;
+        console.log(response);
+
+        const getRandomInt = (min, max) => {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        randomIndex = getRandomInt(0, 15);
+
+        const videoId = response[randomIndex].id.videoId
+
+        mainSection.insertAdjacentHTML('beforeend', `<iframe id="existing-iframe-example"
+            width="534" height="300"
+            src="https://www.youtube.com/embed/${videoId}?enablejsapi=1"
+            frameborder="0"
+            style="border: solid 4px #37474F"></iframe>`);
+
+    } catch (err) {
+        console.log(err);
     }
-
-    randomIndex = getRandomInt(0, 15);
-
-    const videoId = response[randomIndex].id.videoId
-
-    mainSection.insertAdjacentHTML('beforeend', `<iframe id="existing-iframe-example"
-        width="534" height="300"
-        src="https://www.youtube.com/embed/${videoId}?enablejsapi=1"
-        frameborder="0"
-        style="border: solid 4px #37474F"></iframe>`);
 }
 
 window.addEventListener('load', loadVideo);
