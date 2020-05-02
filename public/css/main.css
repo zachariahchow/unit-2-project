@@ -704,6 +704,23 @@ h4 {
 
 /*iframe*/
 
+.iframe__container {
+		width: 80%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin: 24px 0;
+}
+
 iframe {
 		margin: 24px 0;
+		object-fit: contain;
+		width: 100%;
+		height: 300px;
+		max-width: 600px;
+		-webkit-object-fit: contain;
+		-moz-object-fit: contain;
+		-o-object-fit: contain;
+		-ms-object-fit: contain;
 }
