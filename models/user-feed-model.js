@@ -6,13 +6,18 @@ const youtube = google.youtube({
 
 module.exports = {
     getVideosFromYoutube: async function(query) {
-        const searchRes = await youtube.search.list({
-            part: 'snippet',
-            q: query,
-            maxResults: 15
-        });
+        try {
+            const searchRes = await youtube.search.list({
+                part: 'snippet',
+                q: query,
+                maxResults: 15
+            });
 
-        console.log(searchRes.data.items);
-        return searchRes.data.items;
+            console.log(searchRes.data.items);
+            return searchRes.data.items;
+
+        } catch (err) {
+            console.log(err);
+        }
     }
 }
