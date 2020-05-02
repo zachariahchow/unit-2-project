@@ -2,6 +2,7 @@ const express = require('express');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const path = require('path');
+require('dotenv').config();
 
 /**
  * ===================================
@@ -119,3 +120,5 @@ let onClose = function() {
 
 process.on('SIGTERM', onClose);
 process.on('SIGINT', onClose);
+
+console.log(process.env.API_KEY_YOUTUBE);
