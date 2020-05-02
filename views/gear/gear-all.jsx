@@ -40,7 +40,6 @@ class AllGear extends React.Component {
                 <Head />
                 <script defer src='./js/util/send-http-request.js' />
                 <script defer src='./js/gear-all.js' />
-                <script defer src="./js/util/send-http-request.js"></script>
                 <body>
                     <Header hasMenu="true"/>
                     <Nav link="/pedalboards" linklabel="Pedalboards" link2="/lists" link2label="Lists" link3="/" link3label="Home"/>
