@@ -60,6 +60,7 @@ module.exports = {
         })
 
         console.log(getVideoLinks);
+        await browser.close();
         return getVideoLinks;
     }
 }

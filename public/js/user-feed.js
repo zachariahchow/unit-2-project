@@ -21,15 +21,28 @@ const loadVideo = async () => {
         // const videoId = response[randomIndex].id.videoId
         const videoId = response[randomIndex];
 
-        mainSection.insertAdjacentHTML('beforeend', `<iframe id="existing-iframe-example"
+        const loadingEl = document.querySelector('.loading-el');
+
+        mainSection.removeChild(loadingEl);
+
+        mainSection.insertAdjacentHTML('beforeend', `<div class="iframe__container"> <iframe id="existing-iframe-example"
             src="https://www.youtube.com/embed/${videoId}?enablejsapi=1"
             frameborder="0"
-            style="border: solid 4px #37474F"></iframe>`);
+            style="border: solid 4px #37474F"></iframe>
+            </div>`);
 
     } catch (err) {
         console.log(err);
     }
 }
+
+window.addEventListener('load', () => {
+    const loadingEl = document.createElement('div');
+    loadingEl.classList.add('loading-el');
+    loadingEl.innerText = 'Loading Feed...';
+
+    mainSection.appendChild(loadingEl);
+})
 
 window.addEventListener('load', loadVideo);
 
@@ -40,7 +53,21 @@ const scrollHandler = async () => {
     if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight &&
         document.querySelectorAll('iframe').length < 6) {
 
-        loadVideo();
+        if (!document.querySelector('.loading-el')) {
+
+            const loadingEl = document.createElement('div');
+            loadingEl.classList.add('loading-el');
+            loadingEl.innerText = 'Loading Feed...';
+
+            mainSection.appendChild(loadingEl);
+
+        }
+
+        await loadVideo();
+
+        if (document.querySelector('.loading-el')) {
+            mainSection.removeChild(loadingEl);
+        }
     }
 }
 
