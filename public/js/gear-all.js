@@ -143,6 +143,23 @@ const addForm = document.querySelector('.add-form');
 
 addItemBtn.addEventListener('click', async () => {
 
+    if (document.querySelector('.add-form__msg'))
+        addForm.removeChild(document.querySelector('.add-form__msg'));
+
+    const existingGearEls = document.querySelectorAll('.single-gear__name');
+
+    let nameExists = false;
+
+    existingGearEls.forEach(el => {
+        if (document.querySelector('.add-form__name-input').value == el.value) {
+            nameExists = true;
+        }
+    })
+    if (nameExists) {
+        addForm.insertAdjacentHTML('beforeend', `<div class="add-form__msg"><h3 list-header>Item already exists</h3></div>`);
+        return;
+    }
+
     typeFilterSelect.value = document.querySelector('.add-form__select').value;
     await filterOnChangeHandler();
 
