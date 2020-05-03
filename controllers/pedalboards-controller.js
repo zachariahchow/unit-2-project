@@ -107,4 +107,5 @@ module.exports.deletePedalFromPedalboard = async (req, res) => {
         deletedPedal: deletedGearPedal[0]
     });
 }
+
 //

@@ -145,11 +145,14 @@ module.exports.postAddGearToList = async (req, res) => {
 module.exports.postAddPedalboardToList = async (req, res) => {
     const addPedalboardToListResult = await Pedalboard.addToList(req.params.id, req.params.pedalboardId);
 
-    const newPedalboardInList = await Pedalboard.getById(req.params.pedalboardId)
+    const newPedalboardInList = await Pedalboard.getById(req.params.pedalboardId);
+
+    const newPedalboardPedals = await Pedalboard.getAllPedals(req.session.userId, req.params.pedalboardId);
 
     res.json({
         listPedalboard: addPedalboardToListResult[0],
-        newPedalboard: newPedalboardInList[0]
+        newPedalboard: newPedalboardInList[0],
+        newPedalboardPedals: newPedalboardPedals
     });
 }
 
@@ -169,10 +172,13 @@ module.exports.deletePedalboardFromList = async (req, res) => {
 
     const deletePedalboardFromListResult = await Pedalboard.removeFromList(req.params.id, req.params.pedalboardId);
 
-    const deletedPedalboard = await Pedalboard.getById(req.params.pedalboardId)
+    const deletedPedalboard = await Pedalboard.getById(req.params.pedalboardId);
+
+    const deletedPedalboardPedals = await Pedalboard.getAllPedals(req.session.userId, req.params.pedalboardId);
 
     res.json({
         listPedalboard: deletePedalboardFromListResult[0],
-        deletedPedalboard: deletedPedalboard[0]
+        deletedPedalboard: deletedPedalboard[0],
+        deletedPedalboardPedals: deletedPedalboardPedals
     });
 }

@@ -97,6 +97,14 @@ if (deletePedalboardBtn)
         addedPedalboardOptionHTML = `<option value=${response.deletedPedalboard.id} data-pedalboard-name=${response.deletedPedalboard.name} class="pedalboard-option">${response.deletedPedalboard.name}</option>`
 
         pedalboardsSelect.insertAdjacentHTML('beforeend', addedPedalboardOptionHTML);
+
+        console.log(response.deletedPedalboardPedals);
+
+        for (const pedal of response.deletedPedalboardPedals) {
+            addedGearOptionHTML = `<option value=${pedal['gear_id']} data-gear-name=${pedal.name} class="gear-option">${pedal.name}</option>`
+
+            gearSelect.insertAdjacentHTML('beforeend', addedGearOptionHTML);
+        }
     })
 
 
@@ -139,7 +147,26 @@ addPedalboardBtn.addEventListener('click', async (ev) => {
         addedPedalboardOptionHTML = `<option value=${response.deletedPedalboard.id} data-pedalboard-name=${response.deletedPedalboard.name} class="pedalboard-option">${response.deletedPedalboard.name}</option>`
 
         pedalboardsSelect.insertAdjacentHTML('beforeend', addedPedalboardOptionHTML);
+
+        console.log(response.deletedPedalboardPedals);
+
+        for (const pedal of response.deletedPedalboardPedals) {
+            addedGearOptionHTML = `<option value=${pedal['gear_id']} data-gear-name=${pedal.name} class="gear-option">${pedal.name}</option>`
+
+            gearSelect.insertAdjacentHTML('beforeend', addedGearOptionHTML);
+        }
     });
+
+    const newPedalsIdArr = response.newPedalboardPedals.reduce((idArr, pedal) => {
+        idArr.push(pedal['gear_id']);
+        return idArr;
+    }, [])
+
+    document.querySelectorAll('.gear-option').forEach(option => {
+        if (newPedalsIdArr.includes(parseInt(option.value))) {
+            gearSelect.removeChild(option);
+        }
+    })
 
 })
 
