@@ -21,7 +21,8 @@ class AllLists extends React.Component {
         return (
             <html>
                 <Head />
-                <script defer src="./js/util/send-http-request.js"></script>
+                <script defer src="./js/util/send-http-request.js" />
+                <script defer src="./js/lists-all.js" />
                 <body>
                     <Header hasMenu="true"/>
                     <Nav link="/pedalboards" linklabel="Pedalboards" link2="/gear" link2label="Gear" link3="/" link3label="Home"/>

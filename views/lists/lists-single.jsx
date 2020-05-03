@@ -45,7 +45,6 @@ class SingleList extends React.Component {
                     <Header hasMenu="true"/>
                     <script defer src='/js/util/send-http-request.js' />
                     <script defer src='/js/lists-single.js' />
-                    <script defer src="./js/util/send-http-request.js"></script>
                     <Nav link="/lists" linklabel="Back to Lists" link2="/gear" link2label="Gear" link3="/pedalboards" link3label="Pedalboards"/>
                     <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email}/>
                     <main>
