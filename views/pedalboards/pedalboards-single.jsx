@@ -43,7 +43,7 @@ class SinglePedalboard extends React.Component {
                     <script defer src='./js/util/send-http-request.js' />
                     <script defer src='./js/pedalboards-single.js' />
                     <Nav link="/pedalboards" linklabel="Back to Pedalboards" link2="/gear" link2label="Gear" link3="/lists" link3label="Lists"/>
-                    <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email}/>
+                    <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email} csrf={this.props['_locals'].csrfToken}/>
                     <main>
                         <div className="single-pedalboard__container single-display wrapper-primary">
                             <input className="single-pedalboard__name input-header" data-pedalboard-id={this.props.singlePedalboard.id} defaultValue={this.props.singlePedalboard.name}></input>

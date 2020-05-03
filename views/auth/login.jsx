@@ -8,6 +8,8 @@ class LoginForm extends React.Component {
 
     render() {
 
+        console.log(this.props['_locals']['csrfToken']);
+
         const displayInvalidMsg = () => {
 
             if (this.props.invalidMsg) {
@@ -35,6 +37,7 @@ class LoginForm extends React.Component {
                         <div className="login-register-wrapper">
                             <Header />
                             <form method="POST" action={`/auth/login`} className="auth-form form-primary">
+                                <input type="hidden" name="_csrf" value={`${this.props['_locals'].csrfToken}`}/>
                                 {displayInvalidMsg()}
                                 <h2 className="auth-form__header"></h2>
                                 <label className="label-primary" htmlFor="email">Email</label>

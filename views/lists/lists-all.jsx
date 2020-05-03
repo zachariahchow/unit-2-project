@@ -26,11 +26,12 @@ class AllLists extends React.Component {
                 <body>
                     <Header hasMenu="true"/>
                     <Nav link="/pedalboards" linklabel="Pedalboards" link2="/gear" link2label="Gear" link3="/" link3label="Home"/>
-                    <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email}/>
+                    <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email} csrf={this.props['_locals'].csrfToken}/>
                     <main>
                         <div className="form__wrapper">
                             <h2 className="page-header">LISTS</h2>
                             <form method="POST" action={`/lists`} className="add-form">
+                                <input type="hidden" name="_csrf" value={`${this.props['_locals'].csrfToken}`}/>
                                 <h2 className="add-form__header">Add List</h2>
                                 <input className="add-form__name-input input-primary" type="text" name="name" placeholder="Name" maxLength="100"/>
                                 <button className="add-form__submit-btn btn-secondary" type="submit">Add</button>

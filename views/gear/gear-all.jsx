@@ -43,10 +43,11 @@ class AllGear extends React.Component {
                 <body>
                     <Header hasMenu="true"/>
                     <Nav link="/pedalboards" linklabel="Pedalboards" link2="/lists" link2label="Lists" link3="/" link3label="Home"/>
-                    <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email}/>
+                    <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email} csrf={this.props['_locals'].csrfToken}/>
                     <main>
                         <h2 className="page-header">GEAR</h2>
                         <form method="POST" action={`/gear`} className="add-form">
+                            <input type="hidden" name="_csrf" value={`${this.props['_locals'].csrfToken}`}/>
                             <h2 className="add-form__header">Add Item</h2>
                             <input className="add-form__name-input input-primary" type="text" name="name" placeholder="Name" maxLength="100"/>
                             <input className="add-form__img-input input-primary" type="text" name="img" placeholder="Image Link" maxLength="300"/>

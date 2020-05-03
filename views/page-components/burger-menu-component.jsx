@@ -19,6 +19,7 @@ const burger = (props) => {
                     <h3 className="user-profile__input-header input-email">Email</h3>
                     <input type="text" className={`user-profile__input-email input-burger`} defaultValue={props.email} />
                 <form type="hidden" method="POST" action={`/auth/logout`} className="auth-form logout-form">
+                <input type="hidden" name="_csrf" value={props.csrf}/>
                 <button type="submit" className="logout-btn btn-burger"><p>Logout</p></button>
                 </form>
                 </div>

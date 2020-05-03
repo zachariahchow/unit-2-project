@@ -46,7 +46,7 @@ class SingleList extends React.Component {
                     <script defer src='/js/util/send-http-request.js' />
                     <script defer src='/js/lists-single.js' />
                     <Nav link="/lists" linklabel="Back to Lists" link2="/gear" link2label="Gear" link3="/pedalboards" link3label="Pedalboards"/>
-                    <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email}/>
+                    <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email} csrf={this.props['_locals'].csrfToken}/>
                     <main>
                         <div className="single-list__container single-display wrapper-primary">
                             <input className="single-list__name input-header" defaultValue={this.props.singleList.name} data-list-id={this.props.singleList.id}></input>
