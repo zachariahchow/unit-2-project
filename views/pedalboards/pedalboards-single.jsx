@@ -46,8 +46,8 @@ class SinglePedalboard extends React.Component {
                     <Nav link="/pedalboards" linklabel="Back to Pedalboards" link2="/gear" link2label="Gear" link3="/lists" link3label="Lists"/>
                     <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email}/>
                     <main>
-                        <div className="single-pedalboard__container single-display">
-                            <p className="single-pedalboard__name page-header">{this.props.singlePedalboard.name}</p>
+                        <div className="single-pedalboard__container single-display wrapper-primary">
+                            <input className="single-pedalboard__name input-header" defaultValue={this.props.singlePedalboard.name}></input>
                             <div className="single-pedalboard__pedals-list">
                                 <select className="single-pedalboard__pedals-list-select" data-pedalboard-id={this.props.singlePedalboard.id}>
                                     {pedalsOptions}
