@@ -1,6 +1,8 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const pgSession = require('connect-pg-simple')(session);
+const db = require('./db');
 const path = require('path');
 require('dotenv').config();
 
@@ -43,7 +45,10 @@ app.engine('jsx', reactEngine);
 
 // Set session and authentication routes. User remains on auth routes until validated/logged in.
 app.use(session({
-    secret: 'tunr!secret',
+    store: new pgSession({
+        pool: db.pool,
+    }),
+    secret: process.env.COOKIE_SECRET,
     resave: false,
     saveUninitialized: false,
     name: 'sid',
@@ -53,7 +58,6 @@ app.use(session({
     }
 }))
 
-const db = require('./db');
 const authRoutes = require('./routes/auth-routes');
 const authController = require('./controllers/auth-controller');
 const errorController = require('./controllers/404-controller');
