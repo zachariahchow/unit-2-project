@@ -19,13 +19,11 @@
   },
   "homepage": "https://github.com/zachariahchow/unit-2-project#readme",
   "dependencies": {
-    "cookie-parser": "^1.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "express-promise-router": "^3.0.3",
     "express-react-views": "^0.10.5",
     "express-session": "^1.17.1",
-    "express-sessions": "^1.0.6",
     "google-auth-library": "^6.0.0",
     "googleapis": "^49.0.0",
     "helmet": "^3.22.0",
