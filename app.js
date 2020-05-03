@@ -26,10 +26,13 @@ app.use(express.urlencoded({
 
 app.use(express.static(path.join(__dirname, './public/')));
 
-//Experimenting with helmet: calls are trivial
+//Experimenting with helmet
 const helmet = require('helmet');
-app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' }));
+app.use(helmet.hidePoweredBy());
 //
+
+const compression = require('compression');
+app.use(compression());
 
 // Set react-views to be the default view engine
 const reactEngine = require('express-react-views').createEngine();
