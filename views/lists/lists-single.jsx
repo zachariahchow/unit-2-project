@@ -49,7 +49,7 @@ class SingleList extends React.Component {
                     <Burgermenu img={this.props.currentUser['img_link']} name={this.props.currentUser.name} email={this.props.currentUser.email}/>
                     <main>
                         <div className="single-list__container single-display wrapper-primary">
-                            <input className="single-list__name input-header" defaultValue={this.props.singleList.name}></input>
+                            <input className="single-list__name input-header" defaultValue={this.props.singleList.name} data-list-id={this.props.singleList.id}></input>
                             <div className="single-list__gear-list">
                                 <div className="add-form">
                                     <select className="single-list__gear-list-select" data-list-id={this.props.singleList.id}>

@@ -68,3 +68,17 @@ addPedalBtn.addEventListener('click', async () => {
     })
 
 })
+
+//Pedalboard Name-Input Change Event
+const pedalboardNameInput = document.querySelector('.single-pedalboard__name');
+
+pedalboardNameInput.addEventListener('change', async (ev) => {
+    const response = await sendHttpRequest('PUT',
+        `/pedalboards/${ev.target.dataset.pedalboardId}`, { name: ev.target.value }, { 'Content-Type': 'application/json' }
+    );
+
+    console.log(response[0]);
+
+    pedalboardNameInput.value = response[0].name
+
+})

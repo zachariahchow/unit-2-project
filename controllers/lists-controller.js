@@ -118,9 +118,9 @@ module.exports.postAddList = async (req, res) => {
 
 module.exports.putEditListById = async (req, res) => {
 
-    const editListResult = await List.editById(req.params.id, req.body.name);
+    const editListResult = await List.editById(req.params.id, req.session.userId, req.body.name);
 
-    res.send(editListResult);
+    res.json(editListResult);
 }
 
 module.exports.deleteListById = async (req, res) => {

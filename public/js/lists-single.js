@@ -142,3 +142,17 @@ addPedalboardBtn.addEventListener('click', async (ev) => {
     });
 
 })
+
+//ListName-Input Change Event
+const listNameInput = document.querySelector('.single-list__name');
+
+listNameInput.addEventListener('change', async (ev) => {
+    const response = await sendHttpRequest('PUT',
+        `/lists/${ev.target.dataset.listId}`, { name: ev.target.value }, { 'Content-Type': 'application/json' }
+    );
+
+    console.log(response[0]);
+
+    listNameInput.value = response[0].name
+
+})

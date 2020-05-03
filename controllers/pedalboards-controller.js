@@ -70,9 +70,9 @@ module.exports.postAddPedalboard = async (req, res) => {
 }
 module.exports.putEditPedalboardById = async (req, res) => {
 
-    const editPedalboardResult = await Pedalboard.editById(req.session.userId, req.params.id);
+    const editPedalboardResult = await Pedalboard.editById(req.session.userId, req.params.id, req.body.name);
 
-    res.send(editPedalboardResult);
+    res.json(editPedalboardResult);
 }
 
 module.exports.deletePedalboardById = async (req, res) => {

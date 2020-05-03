@@ -22,8 +22,8 @@ module.exports = class List {
         return rows;
     }
 
-    static async editById(listId, name) {
-        const query = `UPDATE lists SET name = '${name}', WHERE id=${listId} RETURNING *`
+    static async editById(listId, userId, name) {
+        const query = `UPDATE lists SET name = '${name}' WHERE id=${listId} AND user_id=${userId} RETURNING *`
 
         const { rows } = await db.query(query);
 

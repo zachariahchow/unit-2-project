@@ -29,7 +29,7 @@ module.exports = class Pedalboard {
         return rows;
     }
 
-    static async editById(userId, pedalboardId) {
+    static async editById(userId, pedalboardId, name) {
 
         const query = `UPDATE pedalboards SET name = '${name}' WHERE id=${pedalboardId} AND user_id ='${userId}'RETURNING *`;
 
