@@ -4,6 +4,7 @@ const session = require('express-session');
 const pgSession = require('connect-pg-simple')(session);
 const db = require('./db');
 const path = require('path');
+const csrf = require('csurf');
 require('dotenv').config();
 
 /**
@@ -58,6 +59,9 @@ app.use(session({
     }
 }))
 
+const csrfProtection = csrf();
+app.use(csrfProtection);
+
 const authRoutes = require('./routes/auth-routes');
 const authController = require('./controllers/auth-controller');
 const errorController = require('./controllers/404-controller');
@@ -66,6 +70,12 @@ const listsRoutes = require('./routes/lists-routes');
 const pedalboardsRoutes = require('./routes/pedalboards-routes');
 const userProfileRoutes = require('./routes/user-profile-routes');
 const userFeedRoutes = require('./routes/user-feed-routes');
+
+app.use((req, res, next) => {
+    res.locals.csrfToken = req.csrfToken();
+    console.log(res.locals.crsfToken);
+    next();
+})
 
 app.use('/auth', authRoutes);
 
