@@ -37,11 +37,14 @@ const loadVideo = async () => {
 }
 
 window.addEventListener('load', () => {
-    const loadingEl = document.createElement('div');
-    loadingEl.classList.add('loading-el');
-    loadingEl.innerText = 'Loading Feed...';
 
-    mainSection.appendChild(loadingEl);
+    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+        const loadingEl = document.createElement('div');
+        loadingEl.classList.add('loading-el');
+        loadingEl.innerText = 'Loading Feed...';
+
+        mainSection.appendChild(loadingEl);
+    }
 })
 
 window.addEventListener('load', loadVideo);
