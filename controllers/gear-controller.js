@@ -49,6 +49,12 @@ module.exports.postAddGear = async (req, res) => {
         req.body.img,
         req.body.notes);
 
+    if (!newGear.name)
+        newGear.name = 'Unnamed Item (Tap to Edit)';
+
+    if (!newGear.img)
+        newGear.img = 'https://www.pngkey.com/png/detail/114-1145326_guitar-logo-png-scott-pilgrim-red-shirt.png';
+
     const addGearResult = await newGear.add();
 
     res.json(addGearResult);

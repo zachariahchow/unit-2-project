@@ -108,6 +108,9 @@ module.exports.postAddList = async (req, res) => {
 
     const newList = new List(req.session.userId, req.body.name);
 
+    if (!newList.name)
+        newList.name = 'Unnamed List';
+
     const addListResult = await newList.add();
 
     res.redirect(`/lists/${addListResult[0].id}`);
