@@ -38,7 +38,7 @@ class Home extends React.Component {
                                 </form>
                             </div>
                     </div>
-                    <h3 className="user-feed__header page-header">User Feed</h3>
+                    <h3 className="user-feed__header page-header">Feed</h3>
                     </main>
                 </body>
             </html>
