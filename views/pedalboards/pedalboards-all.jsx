@@ -20,7 +20,7 @@ class AllPedalboards extends React.Component {
 
         return (
             <html>
-                <Head />
+                <Head csrfToken={this.props['_locals'].csrfToken}/>
                 <script defer src="./js/util/send-http-request.js" />
                 <script defer src="./js/pedalboards-all.js" />
                 <body>

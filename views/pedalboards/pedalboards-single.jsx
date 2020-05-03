@@ -36,7 +36,7 @@ class SinglePedalboard extends React.Component {
 
         return (
             <html>
-                <Head />
+                <Head csrfToken={this.props['_locals'].csrfToken}/>
 
                 <body>
                     <Header hasMenu="true"/>

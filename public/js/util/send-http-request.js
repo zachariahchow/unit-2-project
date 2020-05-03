@@ -1,4 +1,6 @@
 // AJAX //
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
 const sendHttpRequest = async (httpMethod, url, data, httpHeaders) => {
 
     try {

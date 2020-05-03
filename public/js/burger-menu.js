@@ -17,7 +17,7 @@ const userImg = document.querySelector('.user-profile__img');
 
 imageInput.addEventListener('change', async () => {
 
-    const response = await sendHttpRequest('PUT', `/user-profile/edit/img`, { field: imageInput.value }, { 'Content-Type': 'application/json' });
+    const response = await sendHttpRequest('PUT', `/user-profile/edit/img`, { field: imageInput.value }, { 'Content-Type': 'application/json', 'CSRF-Token': csrfToken });
 
     userImg.setAttribute('src', response[0]['img_link']);
 
@@ -26,14 +26,14 @@ imageInput.addEventListener('change', async () => {
 
 nameInput.addEventListener('change', async () => {
 
-    const response = await sendHttpRequest('PUT', `/user-profile/edit/name`, { field: nameInput.value }, { 'Content-Type': 'application/json' });
+    const response = await sendHttpRequest('PUT', `/user-profile/edit/name`, { field: nameInput.value }, { 'Content-Type': 'application/json', 'CSRF-Token': csrfToken });
 
     console.log(response);
 })
 
 emailInput.addEventListener('change', async () => {
 
-    const response = await sendHttpRequest('PUT', `/user-profile/edit/email`, { field: emailInput.value }, { 'Content-Type': 'application/json' });
+    const response = await sendHttpRequest('PUT', `/user-profile/edit/email`, { field: emailInput.value }, { 'Content-Type': 'application/json', 'CSRF-Token': csrfToken });
 
     console.log(response);
 })

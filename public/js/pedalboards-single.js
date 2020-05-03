@@ -6,7 +6,7 @@ const pedalsList = document.querySelector('.single-pedalboard__pedals-list');
 deletePedalBtns.forEach(btn => {
     btn.addEventListener('click', async () => {
 
-        const response = await sendHttpRequest('DELETE', `/pedalboards/${btn.dataset.pedalboardId}/${btn.dataset.gearId}`);
+        const response = await sendHttpRequest('DELETE', `/pedalboards/${btn.dataset.pedalboardId}/${btn.dataset.gearId}`, {}, { 'CSRF-Token': csrfToken });
 
         const deletedPedal = document.querySelector(`.pedal-wrapper-${btn.dataset.gearId}`)
 
@@ -25,7 +25,7 @@ addPedalBtn.addEventListener('click', async () => {
 
     const response = await sendHttpRequest('POST', `/pedalboards/${pedalsSelect.dataset.pedalboardId}/${pedalsSelect.value}`, {
         gearOrder: pedalEls.length + 1
-    }, { 'Content-Type': 'application/json' });
+    }, { 'Content-Type': 'application/json', 'CSRF-Token': csrfToken });
 
     console.log(response);
 
@@ -53,7 +53,7 @@ addPedalBtn.addEventListener('click', async () => {
 
     newPedalDeleteBtn.addEventListener('click', async (ev) => {
 
-        const response = await sendHttpRequest('DELETE', `/pedalboards/${ev.target.dataset.pedalboardId}/${ev.target.dataset.gearId}`);
+        const response = await sendHttpRequest('DELETE', `/pedalboards/${ev.target.dataset.pedalboardId}/${ev.target.dataset.gearId}`, {}, { 'CSRF-Token': csrfToken });
 
         const deletedPedal = document.querySelector(`.pedal-wrapper-${ev.target.dataset.gearId}`)
 
@@ -74,7 +74,7 @@ const pedalboardNameInput = document.querySelector('.single-pedalboard__name');
 
 pedalboardNameInput.addEventListener('change', async (ev) => {
     const response = await sendHttpRequest('PUT',
-        `/pedalboards/${ev.target.dataset.pedalboardId}`, { name: ev.target.value }, { 'Content-Type': 'application/json' }
+        `/pedalboards/${ev.target.dataset.pedalboardId}`, { name: ev.target.value }, { 'Content-Type': 'application/json', 'CSRF-Token': csrfToken }
     );
 
     console.log(response[0]);

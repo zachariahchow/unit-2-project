@@ -4,7 +4,7 @@ const gearSelects = document.querySelectorAll('.single-gear__select');
 const gearImgLinkFields = document.querySelectorAll('.single-gear__img-input');
 
 const onChangeHandler = async function(gearId, prop) {
-    const response = await sendHttpRequest('PUT', `/gear/${gearId}/${prop}`, { field: this.value }, { 'Content-Type': 'application/json' });
+    const response = await sendHttpRequest('PUT', `/gear/${gearId}/${prop}`, { field: this.value }, { 'Content-Type': 'application/json', 'CSRF-Token': csrfToken });
     console.log(this.value);
 }
 
@@ -97,7 +97,7 @@ const filterOnChangeHandler = async () => {
             const deleteBtn = document.querySelector(`.single-gear__delete-btn[data-gear-id="${gear.id}"]`);
 
             deleteBtn.addEventListener('click', async (ev) => {
-                const response = await sendHttpRequest('DELETE', `/gear/${ev.target.dataset.gearId}`);
+                const response = await sendHttpRequest('DELETE', `/gear/${ev.target.dataset.gearId}`, {}, { 'CSRF-Token': csrfToken });
 
                 const deletedGear = document.querySelector(`.single-gear__container[data-gear-id="${ev.target.dataset.gearId}"]`);
 
@@ -126,7 +126,7 @@ typeFilterSelect.addEventListener('change', filterOnChangeHandler);
 const deleteGearBtns = document.querySelectorAll('.single-gear__delete-btn');
 deleteGearBtns.forEach(btn => {
     btn.addEventListener('click', async (ev) => {
-        const response = await sendHttpRequest('DELETE', `/gear/${ev.target.dataset.gearId}`);
+        const response = await sendHttpRequest('DELETE', `/gear/${ev.target.dataset.gearId}`, {}, { 'CSRF-Token': csrfToken });
 
         const deletedGear = document.querySelector(`.single-gear__container[data-gear-id="${ev.target.dataset.gearId}"]`);
 
@@ -167,7 +167,7 @@ addItemBtn.addEventListener('click', async () => {
         name: document.querySelector('.add-form__name-input').value,
         img: document.querySelector('.add-form__img-input').value,
         type: document.querySelector('.add-form__select').value
-    }, { 'Content-Type': 'application/json' });
+    }, { 'Content-Type': 'application/json', 'CSRF-Token': csrfToken });
 
     console.log(response);
     const gear = response[0];
@@ -209,7 +209,7 @@ addItemBtn.addEventListener('click', async () => {
     const deleteBtn = document.querySelector(`.single-gear__delete-btn[data-gear-id="${gear.id}"]`);
 
     deleteBtn.addEventListener('click', async (ev) => {
-        const response = await sendHttpRequest('DELETE', `/gear/${ev.target.dataset.gearId}`);
+        const response = await sendHttpRequest('DELETE', `/gear/${ev.target.dataset.gearId}`, {}, { 'CSRF-Token': csrfToken });
 
         const deletedGear = document.querySelector(`.single-gear__container[data-gear-id="${ev.target.dataset.gearId}"]`);
 

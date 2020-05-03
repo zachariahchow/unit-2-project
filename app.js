@@ -73,7 +73,6 @@ const userFeedRoutes = require('./routes/user-feed-routes');
 
 app.use((req, res, next) => {
     res.locals.csrfToken = req.csrfToken();
-    console.log(res.locals.crsfToken);
     next();
 })
 
