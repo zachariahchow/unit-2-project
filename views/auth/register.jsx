@@ -32,7 +32,7 @@ class RegisterForm extends React.Component {
                 <body>
 
                     <Nav link="/" linklabel="Back"/>
-                    <main>
+                    <main className="login-register__main">
                         <div className="login-register-wrapper">
                             <Header />
                             <form method="POST" action={`/auth/register`} className="auth-form form-primary">

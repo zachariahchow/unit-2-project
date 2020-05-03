@@ -9,10 +9,10 @@ class AuthIndex extends React.Component {
         return (
             <html>
                 <Head />
-                <body>
+                <body className="auth-home__body">
 
 
-                    <main>
+                    <main className="auth__main">
 
                     <div className="login-register-wrapper">
                         <div className="form-primary">
