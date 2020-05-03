@@ -156,7 +156,7 @@ addItemBtn.addEventListener('click', async () => {
         }
     })
     if (nameExists) {
-        addForm.insertAdjacentHTML('beforeend', `<div class="add-form__msg"><h3 list-header>Item already exists</h3></div>`);
+        addForm.insertAdjacentHTML('beforeend', `<div class="add-form__msg"><h3 class="list-header">Item already exists</h3></div>`);
         return;
     }
 
