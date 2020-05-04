@@ -64,6 +64,14 @@ img {
 		-ms-object-fit: contain;
 }
 
+.logo-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 90px;
+		height: auto;
+}
+
 select {
 		display: block;
 		font-size: 16px;
@@ -222,38 +230,65 @@ h4 {
 		height: 100%;
 		padding: 12px 24px;
 		width: 80%;
+		max-width: 500px;
+		max-height: 150px;
 		text-decoration: none;
 		color: rgba(1, 1, 1, 0.6);
 		letter-spacing: 0.1rem;
 		font-weight: 500;
 		/*background-color: rgba(1, 1, 1, 0.1);*/
 		text-align: center;
-		font-size: 1rem;
+		font-size: 1.1rem;
 		text-transform: uppercase;
 		border: 2px solid lightgrey;
-		border-radius: 12px;
+		border-radius: 16px;
 		margin: 12px 0;
 }
 
 .link-primary:hover {
-		color: darkred;
+		color: white;
+		background-color: black;
+		border: 5px solid grey;
+		font-weight: 600;
+		-webkit-transform: scale(1.02);
+		-ms-transform: scale(1.02);
+		-o-transform: scale(1.02);
+		transform: scale(1.02);
+		opacity: 0.95;
 }
 
 .link-primary:active {
-		color: red;
+		color: grey;
 		letter-spacing: 0.12rem;
+		opacity: 1;
 }
 
 .link-secondary {
 		width: auto;
+		padding: 2% 6%;
 		margin: 12px 0;
 		font-size: 1.2rem;
 		text-align: center;
+		color: grey;
+		border: 1px dotted black;
+		box-sizing: border-box;
+		text-transform: uppercase;
+		letter-spacing: 0.1rem;
 }
 
 .link-secondary:hover {
-		color: darkred;
-		letter-spacing: 0.05rem;
+
+		color: white;
+		border: 2px solid lightgrey;
+		background-color: grey;
+		-webkit-transform: scale(1.1);
+		-ms-transform: scale(1.1);
+		-o-transform: scale(1.1);
+		transform: scale(1.1);
+		-webkit-transition: 0.2s all linear;
+		-o-transition: 0.2s all linear;
+		transition: 0.2s all linear;
+		margin: 8px 0;
 }
 
 .link-secondary:active {
@@ -269,6 +304,7 @@ h4 {
 .list-header {
 		margin: 12px 0;
 		text-align: center;
+		text-decoration: underline;
 }
 
 .label-primary {
@@ -731,6 +767,11 @@ h4 {
 }
 
 /*iframe*/
+
+.user-feed__header {
+		border-top: 1px solid grey;
+		border-bottom: 1px solid grey;
+}
 
 .iframe__container {
 		width: 80%;
