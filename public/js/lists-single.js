@@ -174,12 +174,17 @@ addPedalboardBtn.addEventListener('click', async (ev) => {
 const listNameInput = document.querySelector('.single-list__name');
 
 listNameInput.addEventListener('change', async (ev) => {
+
+    if (!ev.target.value) {
+        ev.target.value = 'Unnamed List';
+    }
+
     const response = await sendHttpRequest('PUT',
         `/lists/${ev.target.dataset.listId}`, { name: ev.target.value }, { 'Content-Type': 'application/json', 'CSRF-Token': csrfToken }
     );
 
     console.log(response[0]);
 
-    listNameInput.value = response[0].name
+    ev.target.value = response[0].name
 
 })
