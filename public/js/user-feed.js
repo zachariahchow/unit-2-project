@@ -58,31 +58,34 @@ window.addEventListener('load', loadVideo);
 const scrollHandler = async () => {
 
     // console.log(`Window Inner Height: ${window.innerHeight} \n Window Page Y Offset: ${window.pageYOffset} \n Body Offset Height: ${document.body.offsetHeight}`);
+    try {
+        if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight &&
+            document.querySelectorAll('iframe').length < 6) {
 
-    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight &&
-        document.querySelectorAll('iframe').length < 6) {
+            if (!document.querySelector('.loading-el__wrapper')) {
 
-        if (!document.querySelector('.loading-el__wrapper')) {
+                const loadingEl = document.createElement('div');
+                // loadingEl.classList.add('loading-el');
+                // loadingEl.innerText = 'Loading Feed...';
 
-            const loadingEl = document.createElement('div');
-            // loadingEl.classList.add('loading-el');
-            // loadingEl.innerText = 'Loading Feed...';
-
-            loadingEl.classList.add('loading-el__wrapper');
-            loadingEl.innerHTML = (`<div class="black-one"></div>
+                loadingEl.classList.add('loading-el__wrapper');
+                loadingEl.innerHTML = (`<div class="black-one"></div>
                                     <div class="grey-one"></div>
                                     <div class="black-two"></div>
                                     <div class="grey-two"></div>`);
 
-            mainSection.appendChild(loadingEl);
+                mainSection.appendChild(loadingEl);
 
+            }
+
+            await loadVideo();
+
+            if (document.querySelector('.loading-el__wrapper')) {
+                mainSection.removeChild(loadingEl);
+            }
         }
-
-        await loadVideo();
-
-        if (document.querySelector('.loading-el__wrapper')) {
-            mainSection.removeChild(loadingEl);
-        }
+    } catch (err) {
+        console.log(err);
     }
 }
 
