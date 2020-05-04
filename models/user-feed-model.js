@@ -24,7 +24,7 @@ module.exports = {
 
     getVideosFromYoutube: async function(query) {
         try {
-            const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+            const browser = await puppeteer.launch({ headless: true, timeout: 0, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
             const page = await browser.newPage();
 
             // const navPromise = page.waitForNavigation();
