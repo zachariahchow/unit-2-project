@@ -8,8 +8,6 @@ const loadVideo = async () => {
 
         const response = await sendHttpRequest('GET', `/user-feed/videos`);
 
-        console.log(response);
-
         const getRandomInt = (min, max) => {
             min = Math.ceil(min);
             max = Math.floor(max);
@@ -76,9 +74,9 @@ const scrollHandler = async () => {
 
                 mainSection.appendChild(loadingEl);
 
-            }
+                await loadVideo();
 
-            await loadVideo();
+            }
 
             if (document.querySelector('.loading-el__wrapper')) {
                 mainSection.removeChild(loadingEl);
