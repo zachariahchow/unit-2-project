@@ -73,12 +73,17 @@ addPedalBtn.addEventListener('click', async () => {
 const pedalboardNameInput = document.querySelector('.single-pedalboard__name');
 
 pedalboardNameInput.addEventListener('change', async (ev) => {
+
+    if (!ev.target.value) {
+        ev.target.value = 'Unnamed Pedalboard';
+    }
+
     const response = await sendHttpRequest('PUT',
         `/pedalboards/${ev.target.dataset.pedalboardId}`, { name: ev.target.value }, { 'Content-Type': 'application/json', 'CSRF-Token': csrfToken }
     );
 
     console.log(response[0]);
 
-    pedalboardNameInput.value = response[0].name
+    ev.target.value = response[0].name
 
 })
