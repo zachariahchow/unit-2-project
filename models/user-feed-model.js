@@ -40,7 +40,7 @@ module.exports = {
                 return new Promise(resolve => setTimeout(resolve, ms));
             }
 
-            await timeout(700);
+            await timeout(800);
             // await page.waitForNavigation({ timeout: 0, waitUntil: 'load' });
 
             const getVideoLinks = await page.evaluate(() => {

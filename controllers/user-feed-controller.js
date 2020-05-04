@@ -1,6 +1,10 @@
 const userFeed = require('../models/user-feed-model');
 const Gear = require('../models/gear-model');
 
+module.exports.startChromium = async (req, res) => {
+    await userFeed.startChromium();
+}
+
 module.exports.getUserGearVideos = async (req, res) => {
 
     const getGearResult = await Gear.getAll(req.session.userId);
