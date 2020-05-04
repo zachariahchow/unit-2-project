@@ -5,9 +5,11 @@
 		"main": "index.js",
 		"scripts": {
 				"test": "echo \"Error: no test specified\" && exit 1",
-				"start": "node app.js",
+				"heroku-prebuild": "npm install pm2 -g",
+				"start": "pm2-runtime start ecosystem.config.js --env production",
 				"start:dev": "nodemon app.js",
 				"start:pm": "pm2 start app.js --watch --no-daemon --ignore-watch 'node_modules'",
+				"start:pm-dev": "pm2-runtime start ecosystem.config.js --env development",
 				"end:pm": "pm2 stop app.js"
 		},
 		"repository": {
