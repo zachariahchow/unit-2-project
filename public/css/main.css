@@ -794,3 +794,96 @@ iframe {
 		-o-object-fit: contain;
 		-ms-object-fit: contain;
 }
+
+/*user feed loading element*/
+
+
+.loading-el__wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+}
+
+.black-one {
+		/*background-color: #feb60a;*/
+		background-color: black;
+}
+
+.grey-one {
+		/*background-color: #ff0062;*/
+		background-color: grey;
+		animation-delay: 1s;
+}
+
+.black-two {
+		/*background-color: #00dbf9;*/
+		background-color: black;
+		animation-delay: 2s;
+}
+
+.grey-two {
+		/*background-color: #da00f7;*/
+		background-color: grey;
+		animation-delay: 3s;
+}
+
+.loading-el__wrapper>div {
+		width: 1vw;
+		height: 1vw;
+		border-radius: 30px;
+		margin: 1vw;
+		background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+		animation: bounce 1.5s ease-out infinite;
+		-webkit-animation: bounce 1.5s ease-out infinite;
+}
+
+
+
+@keyframes bounce {
+
+		0%,
+		50%,
+		100% {
+				transform: scale(1);
+				filter: opacity(1);
+		}
+
+		12.5% {
+				transform: scale(0.8);
+		}
+
+		25% {
+				transform: scale(0.6);
+				filter: opacity(0.6);
+		}
+
+		75% {
+				filter: opacity(0.8);
+				transform: scale(1.1);
+		}
+
+}
+
+@-webkit-keyframes bounce {
+
+		0%,
+		50%,
+		100% {
+				transform: scale(1);
+				filter: opacity(1);
+		}
+
+		12.5% {
+				transform: scale(0.8);
+		}
+
+		25% {
+				transform: scale(0.6);
+				filter: opacity(0.6);
+		}
+
+		75% {
+				filter: opacity(0.8);
+				transform: scale(1.1);
+		}
+}

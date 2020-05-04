@@ -21,7 +21,7 @@ const loadVideo = async () => {
         // const videoId = response[randomIndex].id.videoId
         const videoId = response[randomIndex];
 
-        const loadingEl = document.querySelector('.loading-el');
+        const loadingEl = document.querySelector('.loading-el__wrapper');
 
         mainSection.removeChild(loadingEl);
 
@@ -40,8 +40,14 @@ window.addEventListener('load', () => {
 
     if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
         const loadingEl = document.createElement('div');
-        loadingEl.classList.add('loading-el');
-        loadingEl.innerText = 'Loading Feed...';
+        loadingEl.classList.add('loading-el__wrapper');
+        loadingEl.innerHTML = (`<div class="black-one"></div>
+                                    <div class="grey-one"></div>
+                                    <div class="black-two"></div>
+                                    <div class="grey-two"></div>`);
+        // const loadingEl = document.createElement('div');
+        // loadingEl.classList.add('loading-el');
+        // loadingEl.innerText = 'Loading Feed...';
 
         mainSection.appendChild(loadingEl);
     }
@@ -56,11 +62,17 @@ const scrollHandler = async () => {
     if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight &&
         document.querySelectorAll('iframe').length < 6) {
 
-        if (!document.querySelector('.loading-el')) {
+        if (!document.querySelector('.loading-el__wrapper')) {
 
             const loadingEl = document.createElement('div');
-            loadingEl.classList.add('loading-el');
-            loadingEl.innerText = 'Loading Feed...';
+            // loadingEl.classList.add('loading-el');
+            // loadingEl.innerText = 'Loading Feed...';
+
+            loadingEl.classList.add('loading-el__wrapper');
+            loadingEl.innerHTML = (`<div class="black-one"></div>
+                                    <div class="grey-one"></div>
+                                    <div class="black-two"></div>
+                                    <div class="grey-two"></div>`);
 
             mainSection.appendChild(loadingEl);
 
@@ -68,7 +80,7 @@ const scrollHandler = async () => {
 
         await loadVideo();
 
-        if (document.querySelector('.loading-el')) {
+        if (document.querySelector('.loading-el__wrapper')) {
             mainSection.removeChild(loadingEl);
         }
     }
