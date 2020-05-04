@@ -63,9 +63,9 @@ module.exports = {
             console.log(getVideoLinks);
             await browser.close();
             return getVideoLinks;
-        }
 
-    } catch (err) {
-        console.log(err);
+        } catch (err) {
+            console.log(err);
+        }
     }
 }
