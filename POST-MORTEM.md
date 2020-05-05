@@ -10,9 +10,9 @@ Plan out internal API endpoints while designing my backend.
 
 1. What in my process and approach to this project went well that I would repeat next time?
 
-Wireframing my routes more comprehensively. Gives me a good idea of what is needed in the DOM and what needs to be interactive or dynamic (so I know for sure, this is a change to the UI and relies on an AJAX call engaged from the DOM, so a separate view is unnecessary etc.)
+- Wireframing my routes more comprehensively. Gives me a good idea of what is needed in the DOM and what needs to be interactive or dynamic (so I know for sure, this is a change to the UI and relies on an AJAX call engaged from the DOM, so a separate view is unnecessary etc.)
 
-Re: MVC, I had previously built my MVC apps around my controllers, so I would write both my query logic / data manipulation within the controllers itself before refactoring out the model methods etc. This time, I planned what methods my models should have and put everything where it should belonged from the start. This saved some time and also helped clarify my thought process.
+- I had previously built my MVC apps around my controllers, so I would write both my query logic / data manipulation within the controllers itself before refactoring out the model methods etc. This time, I planned what methods my models should have and put everything where it should belonged from the start. This saved some time and also helped clarify my thought process.
 --
 
 #### Code and Code Design
