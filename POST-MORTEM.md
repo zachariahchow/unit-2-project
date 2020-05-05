@@ -4,9 +4,9 @@
 
 1. What in my process and approach to this project would I do differently next time?
 
-Would like to try using different CSS methodologies --> OOCSS / Atomic (which will require me to spend some time thinking about and planning my styles before execution, rather than doing a piecemeal on-the-go trial-and-error approach, which I find very time-consuming). 
+ - Would like to try using different CSS methodologies --> OOCSS / Atomic (which will require me to spend some time thinking about and planning my styles before execution, rather than doing a piecemeal on-the-go trial-and-error approach, which I find very time-consuming). 
 
-Plan out internal API endpoints while designing my backend.
+- Plan out internal API endpoints while designing my backend.
 
 1. What in my process and approach to this project went well that I would repeat next time?
 
