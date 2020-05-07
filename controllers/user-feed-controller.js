@@ -1,10 +1,6 @@
 const userFeed = require('../models/user-feed-model');
 const Gear = require('../models/gear-model');
 
-module.exports.startChromium = async (req, res) => {
-    await userFeed.startChromium();
-}
-
 module.exports.getUserGearVideos = async (req, res) => {
 
     const getGearResult = await Gear.getAll(req.session.userId);
@@ -20,8 +16,7 @@ module.exports.getUserGearVideos = async (req, res) => {
     const queryString = getGearResult[randomGearIndex].name.split(" ").join("+");
 
     const getVideosResult = await userFeed.getVideosFromYoutube(queryString);
-
-    console.log(getVideosResult)
+console.log(getVideosResult)
 
     res.json(getVideosResult);
 }
